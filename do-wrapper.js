@@ -352,3 +352,138 @@ DigitalOcean.prototype.sizesGetAll = function(callback) {
         callback(err, body);
     });
 };
+
+/*
+*   Type: Keys
+*   Action: List All Keys
+*   More Information: https://developers.digitalocean.com/#list-all-keys
+*/
+DigitalOcean.prototype.keysGetAll = function(callback) {
+    var url = 'account/keys/';
+    this._get(url, function(err, body) {
+        callback(err, body);
+    });
+};
+
+/*
+*   Type: Keys
+*   Action: Add New Key
+*   More Information: https://developers.digitalocean.com/#create-a-new-key
+*/
+DigitalOcean.prototype.keysAddNew = function(name, key, callback) {
+    var url = 'account/keys/',
+        body = {"name": name, "public_key": key};
+    this._post(url, body, function(err, body) {
+        callback(err, body);
+    });
+};
+
+/*
+*   Type: Keys
+*   Action: Retrieve Existing Key
+*   More Information: https://developers.digitalocean.com/#retrieve-an-existing-key
+*/
+DigitalOcean.prototype.keysGetKey = function(keyID, callback) {
+    var url = 'account/keys/' + keyID;
+    this._get(url, function(err, body) {
+        callback(err, body);
+    });
+};
+
+/*
+*   Type: Keys
+*   Action: Update an Existing Key
+*   More Information: https://developers.digitalocean.com/#update-a-key
+*/
+DigitalOcean.prototype.keysUpdateKey = function(keyID, name, callback) {
+    var url = 'account/keys/' + keyID,
+        body = {"name": name};
+    this._post(url, body, function(err, body) {
+        callback(err, body);
+    });
+};
+
+/*
+*   Type: Keys
+*   Action: Destroy Existing Key
+*   More Information: https://developers.digitalocean.com/#destroy-a-key
+*/
+DigitalOcean.prototype.keysDestroyKey = function(keyID, callback) {
+    var url = 'account/keys/' + keyID;
+    this._delete(url, function(err, body) {
+        callback(err, body);
+    });
+};
+
+/*
+*   Type: Image
+*   Action: Retrieve All Available Images
+*   More Information: https://developers.digitalocean.com/#list-all-images
+*/
+DigitalOcean.prototype.imagesGetAll = function(callback) {
+    var url = 'images/';
+    this._get(url, function(err, body) {
+        callback(err, body);
+    });
+};
+
+/*
+*   Type: Image
+*   Action: Retrieve Existing Image
+*   More Information: https://developers.digitalocean.com/#retrieve-an-existing-image-by-id
+*/
+DigitalOcean.prototype.imagesGetImage = function(imageID, callback) {
+    var url = 'images/' + imageID;
+    this._get(url, function(err, body) {
+        callback(err, body);
+    });
+};
+
+/*
+*   Type: Image
+*   Action: Retrieve Image Via Slug
+*   More Information: https://developers.digitalocean.com/#retrieve-an-existing-image-by-slug
+*/
+DigitalOcean.prototype.imagesGetBySlug = function(imageSlug, callback) {
+    var url = 'images/' + imageSlug;
+    this._get(url, function(err, body) {
+        callback(err, body);
+    });
+};
+
+/*
+*   Type: Image
+*   Action: Delete an Existing Image
+*   More Information: https://developers.digitalocean.com/#delete-an-image
+*/
+DigitalOcean.prototype.imagesDeleteImage = function(imageID, callback) {
+    var url = 'images/' + imageID;
+    this._delete(url, function(err, body) {
+        callback(err, body);
+    });
+};
+
+/*
+*   Type: Image Action
+*   Action: Transfer Image Between Regions
+*   More Information: https://developers.digitalocean.com/#transfer-an-image
+*/
+DigitalOcean.prototype.imagesTransferImage = function(imageID, region, callback) {
+    var url = 'images/' + imageID + '/actions',
+        body = {"type": "transfer", "region": region};
+    this._post(url, body, function(err, body) {
+        callback(err, body);
+    });
+};
+
+/*
+*   Type: Image Action
+*   Action: Get Status of Image Action
+*   More Information: https://developers.digitalocean.com/#retrieve-an-existing-image-action
+*/
+DigitalOcean.prototype.imagesGetActionStatus = function(imageID, actionID, callback) {
+    var url = 'images/' + imageID + '/action/' + actionID;
+    this._get(url, function(err, body) {
+        callback(err, body);
+    });
+};

@@ -2,7 +2,8 @@ do-wrapper
 ==========
 Digital Ocean API v2 - Node.js Wrapper
 
-**Work in progress, aiming to cover all API calls in the new version.**
+If you spot any mistakes or have any suggestions, please raise an issue here:
+https://github.com/matt-major/do-wrapper/issues
 
 ## Usage
 
@@ -94,17 +95,25 @@ domainRecordsDeleteRecord(domain, recordID, callback)
 ###Images
 Available Methods
 ```js
-Coming soon...
+imagesGetAll(callback)
+imagesGetImage(imageID, callback)
+imagesGetBySlug(imageSlug, callback)
+imagesDeleteImage(imageID, callback)
 ```
 ###Image Actions
 Available Methods
 ```js
-Coming soon...
+imagesTransferImage(imageID, region, callback)
+imagesGetActionStatus(imageID, actionID, callback)
 ```
 ###Keys
 Available Methods
 ```js
-Coming soon...
+keysGetAll(callback)
+keysAddNew(name, key, callback)
+keysGetKey(keyID, callback)
+keysUpdateKey(keyID, name, callback)
+keysDestroyKey(keyID, callback)
 ```
 ###Regions
 Available Methods
