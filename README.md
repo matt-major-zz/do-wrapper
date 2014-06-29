@@ -25,11 +25,20 @@ api.dropletsGetAll(function(err, droplets) {
 ```
 
 ## Methods
-###Actions
-```js
-Coming soon...
-```
 ###Droplets
+Some Droplet methods require additional parameters, for this we pass in "extras".
+
+If the method you are using requires no additional parameters pass in ```{}```.
+
+**Example**
+```js
+var options = {"private_networking": true};
+api.dropletsCreateNewDroplet("a-droplet-test", "nyc2", "512mb", 1601, options, function(err, droplet) {
+    console.log(droplet.id);
+});
+```
+
+Available Methods
 ```js
 dropletsGetAll(callback)
 dropletsGetKernelsForDroplet(dropletID, callback)
@@ -40,32 +49,72 @@ dropletsGetDropletById(dropletID, callback)
 dropletsDeleteDroplet(dropletID, callback)
 ```
 ###Droplet Actions
+Some Droplet Actions require more than one parameter, for this we pass in the "options".
+
+If the method you are using requires no additional parameters pass in ```{}```.
+
+**Example**
 ```js
-Coming soon...
+var options = {"name": "ny2-njs"};
+api.dropletActionRequest(1805584, 'rename', options, function(err, action) {
+    console.log(action);
+});
+```
+Available Methods
+```js
+dropletActionRequest(dropletID, action, options, callback)
+dropletActionGetStatus(dropletID, actionID, callback)
+```
+###Domains
+Available Methods
+```js
+domainGetAll(callback)
+domainAddNew(domain, ip, callback)
+domainDeleteDomain(domain, callback)
 ```
 ###Domain Records
+Some Domain Records require additional parameters.
+
+If the method you are using requires no additional parameters pass in ```{}```.
+
+**Example**
 ```js
-Coming soon...
+var options = {"name": "subdomain", "data": "2001:db8::ff01:52:8339"};
+api.domainRecordsAddnew('test.com', 'A', options, function(err, record) {
+    console.log(record);
+});
+```
+Available Methods
+```js
+domainRecordsGetAll(domain, callback)
+domainRecordsAddnew(domain, type, options, callback)
+domainRecordsGetRecord(domain, recordID, callback)
+domainRecordsDeleteRecord(domain, recordID, callback)
 ```
 ###Images
+Available Methods
 ```js
 Coming soon...
 ```
 ###Image Actions
+Available Methods
 ```js
 Coming soon...
 ```
 ###Keys
+Available Methods
 ```js
 Coming soon...
 ```
 ###Regions
+Available Methods
 ```js
-Coming soon...
+regionsGetAll(callback)
 ```
 ###Sizes
+Available Methods
 ```js
-Coming soon...
+sizesGetAll(callback)
 ```
 
 ##License
