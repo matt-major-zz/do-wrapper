@@ -1,0 +1,10 @@
+{
+    "name": "do-wrapper",
+    "version": "0.0.1",
+    "description": "Node.js Wrapper for Digital Ocean API v2",
+    "author": "Matt Major",
+    "dependencies": {
+        "request": "latest",
+        "xtend": "latest"
+    }
+}
