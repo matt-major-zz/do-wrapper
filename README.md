@@ -24,6 +24,49 @@ api.dropletsGetAll(function(err, droplets) {
 });
 ```
 
+## Methods
+###Actions
+```js
+Coming soon...
+```
+###Droplets
+```js
+dropletsGetAll(callback)
+dropletsGetKernelsForDroplet(dropletID, callback)
+dropletsGetBackupsForDroplet(dropletID, callback)
+dropletsGetActionsForDroplet(dropletID, callback)
+dropletsCreateNewDroplet(name, region, size, image, extras, callback)
+dropletsGetDropletById(dropletID, callback)
+dropletsDeleteDroplet(dropletID, callback)
+```
+###Droplet Actions
+```js
+Coming soon...
+```
+###Domain Records
+```js
+Coming soon...
+```
+###Images
+```js
+Coming soon...
+```
+###Image Actions
+```js
+Coming soon...
+```
+###Keys
+```js
+Coming soon...
+```
+###Regions
+```js
+Coming soon...
+```
+###Sizes
+```js
+Coming soon...
+```
 
 ##License
 The MIT License (MIT)
