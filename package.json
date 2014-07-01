@@ -1,15 +1,28 @@
 {
-    "name": "do-wrapper",
-    "version": "0.1.0",
-    "description": "Node.js Wrapper for Digital Ocean API v2",
-    "author": "Matt Major",
-    "homepage": "https://github.com/matt-major/do-wrapper",
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/matt-major/do-wrapper.git"
-    },
-    "dependencies": {
-        "request": "latest",
-        "xtend": "latest"
+  "name": "do-wrapper",
+  "version": "0.1.0",
+  "description": "Node.js Wrapper for Digital Ocean API v2",
+  "author": "Matt Major",
+  "homepage": "https://github.com/matt-major/do-wrapper",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/matt-major/do-wrapper.git"
+  },
+  "main": "./lib/do-wrapper.js",
+  "dependencies": {
+    "request": "latest",
+    "xtend": "latest"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": ""
     }
+  ],
+  "bugs": {
+    "url": "https://github.com/matt-major/do-wrapper/issues"
+  },
+  "keywords": [
+    "digitalocean"
+  ]
 }

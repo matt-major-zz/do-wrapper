@@ -5,6 +5,13 @@ Digital Ocean API v2 - Node.js Wrapper
 If you spot any mistakes or have any suggestions, please raise an issue here:
 https://github.com/matt-major/do-wrapper/issues
 
+## Install
+You can now install ```do-wrapper``` directly from npm.
+
+```js
+npm install do-wrapper
+```
+
 ## Usage
 
 ```
