@@ -13,16 +13,15 @@ npm install do-wrapper
 ```
 
 ## Usage
+All you need to get started is your API key. This can be retrieved from the Digital Ocean console.
+
+By default the v2 API returns 25 results and paginates the rest. In order to allow you control over this, you can set the size of the results to be returned. If you fail to provide this ```do-wrapper``` will default to 50 results.
 
 ```
-//Import
-var DigitalOcean = require('do-wrapper');
-
-//Add your Digital Ocean API Access Token
-var key = 'xxxxx';
-
-//Create a new instance with your Access Token
-var api = new DigitalOcean(key);
+var DigitalOcean = require('do-wrapper'),
+    key = 'xxxxx',
+    size = xx,
+	api = new DigitalOcean(key, size);
 ```
 
 **Example - Return all Droplets**
