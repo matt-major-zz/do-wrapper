@@ -1,6 +1,6 @@
 {
     "name": "do-wrapper",
-    "version": "0.2.2",
+    "version": "0.2.3",
     "description": "Node.js Wrapper for Digital Ocean API v2",
     "author": "Matt Major",
     "homepage": "https://github.com/matt-major/do-wrapper",
@@ -13,12 +13,7 @@
         "request": "latest",
         "xtend": "latest"
     },
-    "licenses": [
-        {
-        "type": "MIT",
-        "url": ""
-        }
-    ],
+    "license": "MIT",
     "bugs": {
         "url": "https://github.com/matt-major/do-wrapper/issues"
     },

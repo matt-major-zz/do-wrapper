@@ -26,7 +26,7 @@ var DigitalOcean = require('do-wrapper'),
 
 **Example - Return all Droplets**
 ```
-api.dropletsGetAll(function(err, droplets) {
+api.dropletsGetAll(function(err, droplets, response) {
     console.log(droplets);
 });
 ```
@@ -40,7 +40,7 @@ If the method you are using requires no additional parameters pass in ```{}```.
 **Example**
 ```js
 var options = {"private_networking": true};
-api.dropletsCreateNewDroplet("a-droplet-test", "nyc2", "512mb", 1601, options, function(err, droplet) {
+api.dropletsCreateNewDroplet("a-droplet-test", "nyc2", "512mb", 1601, options, function(err, droplet, response) {
     console.log(droplet.id);
 });
 ```
@@ -63,7 +63,7 @@ If the method you are using requires no additional parameters pass in ```{}```.
 **Example**
 ```js
 var options = {"name": "ny2-njs"};
-api.dropletActionRequest(1805584, 'rename', options, function(err, action) {
+api.dropletActionRequest(1805584, 'rename', options, function(err, action, response) {
     console.log(action);
 });
 ```
@@ -87,7 +87,7 @@ If the method you are using requires no additional parameters pass in ```{}```.
 **Example**
 ```js
 var options = {"name": "subdomain", "data": "2001:db8::ff01:52:8339"};
-api.domainRecordsAddnew('test.com', 'A', options, function(err, record) {
+api.domainRecordsAddnew('test.com', 'A', options, function(err, record, response) {
     console.log(record);
 });
 ```
@@ -101,7 +101,7 @@ domainRecordsDeleteRecord(domain, recordID, callback)
 ###Images
 Available Methods
 ```js
-imagesGetAll(callback)
+imagesGetAll(includePrivate, callback)
 imagesGetImage(imageID, callback)
 imagesGetBySlug(imageSlug, callback)
 imagesDeleteImage(imageID, callback)
@@ -135,7 +135,7 @@ sizesGetAll(callback)
 ##License
 The MIT License (MIT)
 
-Copyright (c) 2014 Matt Major
+Copyright (c) 2015 Matt Major
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
