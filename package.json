@@ -1,28 +1,34 @@
 {
-    "name": "do-wrapper",
-    "version": "0.2.3",
-    "description": "Node.js Wrapper for Digital Ocean API v2",
-    "author": "Matt Major",
-    "homepage": "https://github.com/matt-major/do-wrapper",
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/matt-major/do-wrapper.git"
-    },
-    "main": "./lib/do-wrapper.js",
-    "dependencies": {
-        "request": "latest",
-        "xtend": "latest"
-    },
-    "license": "MIT",
-    "bugs": {
-        "url": "https://github.com/matt-major/do-wrapper/issues"
-    },
-    "keywords": [
-        "digitalocean",
-        "digital ocean",
-        "api",
-        "node",
-        "javascript",
-        "wrapper"
-    ]
+  "name": "do-wrapper",
+  "version": "1.0.0",
+  "description": "Node.js Wrapper for Digital Ocean API v2",
+  "author": "Matt Major",
+  "homepage": "https://github.com/matt-major/do-wrapper",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/matt-major/do-wrapper.git"
+  },
+  "main": "./lib/do-wrapper.js",
+  "scripts": {
+    "doc": "./node_modules/.bin/jsdoc lib/*.js -d doc"
+  },
+  "dependencies": {
+    "request": "latest",
+    "xtend": "latest"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/matt-major/do-wrapper/issues"
+  },
+  "keywords": [
+    "digitalocean",
+    "digital ocean",
+    "api",
+    "node",
+    "javascript",
+    "wrapper"
+  ],
+  "devDependencies": {
+    "jsdoc": "^3.3.0-beta3"
+  }
 }
