@@ -1,7 +1,23 @@
 do-wrapper
 ==========
+Digital Ocean API v2 - Node.js Wrapper
 
-```v1.0 In Progress```
+If you spot any mistakes or have any suggestions, please raise an issue here:
+https://github.com/matt-major/do-wrapper/issues
+
+## Install
+You can install ```do-wrapper``` directly from npm.
+
+```js
+npm install do-wrapper
+```
+
+### Generate Documentation
+All methods are documented with jsDocs and can be built in to web-page based documentation by running the command below.
+
+```sh
+$ npm run doc
+```
 
 ##License
 The MIT License (MIT)
