@@ -8,8 +8,8 @@ https://github.com/matt-major/do-wrapper/issues
 ## Install
 You can install ```do-wrapper``` directly from npm.
 
-```js
-npm install do-wrapper
+```sh
+$ npm install do-wrapper
 ```
 
 ### Generate Documentation
