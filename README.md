@@ -1,5 +1,8 @@
 do-wrapper
 ==========
+
+![alt dependencies](https://david-dm.org/matt-major/do-wrapper.svg "Dependencies Status")
+
 Digital Ocean API v2 - Node.js Wrapper
 
 If you spot any mistakes or have any suggestions, please raise an issue here:
