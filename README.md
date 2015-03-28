@@ -1,7 +1,8 @@
 do-wrapper
 ==========
 
-![alt dependencies](https://david-dm.org/matt-major/do-wrapper.svg "Dependencies Status")
+[![alt](https://david-dm.org/matt-major/do-wrapper.svg)]()
+[![npm](https://img.shields.io/npm/dm/do-wrapper.svg)]()
 
 Digital Ocean API v2 - Node.js Wrapper
 
