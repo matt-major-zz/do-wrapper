@@ -2,5 +2,4 @@ language: node_js
 node_js:
   - "0.12"
 install:
-  - npm i
-script: "npm run jslint"
+  - npm install -g jshint
