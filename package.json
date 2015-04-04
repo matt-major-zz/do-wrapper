@@ -1,6 +1,6 @@
 {
   "name": "do-wrapper",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Node.js Wrapper for Digital Ocean API v2",
   "author": "Matt Major",
   "homepage": "https://github.com/matt-major/do-wrapper",
@@ -10,7 +10,8 @@
   },
   "main": "./lib/do-wrapper.js",
   "scripts": {
-    "doc": "./node_modules/.bin/jsdoc lib/*.js -d doc"
+    "doc": "./node_modules/.bin/jsdoc lib/*.js -d doc",
+    "jslint": "./node_modules/.bin/jshint lib/*.js"
   },
   "dependencies": {
     "request": "latest",
@@ -29,6 +30,7 @@
     "wrapper"
   ],
   "devDependencies": {
-    "jsdoc": "^3.3.0-beta3"
+    "jsdoc": "^3.3.0-beta3",
+    "jshint": "2.6.3"
   }
 }

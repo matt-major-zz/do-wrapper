@@ -1,8 +1,7 @@
-do-wrapper
-==========
-
-[![alt](https://david-dm.org/matt-major/do-wrapper.svg)]()
-[![npm](https://img.shields.io/npm/dm/do-wrapper.svg)]()
+# do-wrapper
+[![Build Status](https://travis-ci.org/matt-major/do-wrapper.svg?branch=master)](https://travis-ci.org/matt-major/do-wrapper)
+[![Dependencies](https://david-dm.org/matt-major/do-wrapper.svg)](https://www.npmjs.com/package/do-wrapper)
+[![Downloads](https://img.shields.io/npm/dm/do-wrapper.svg)](https://www.npmjs.com/package/do-wrapper)
 
 Digital Ocean API v2 - Node.js Wrapper
 
