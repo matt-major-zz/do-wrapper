@@ -1,28 +1,33 @@
-# do-wrapper
+# do-wrapper 
+### A Node.js wrapper for the Digital Ocean v2 API
+
 [![Build Status](https://travis-ci.org/matt-major/do-wrapper.svg?branch=master)](https://travis-ci.org/matt-major/do-wrapper)
 [![Dependencies](https://david-dm.org/matt-major/do-wrapper.svg)](https://www.npmjs.com/package/do-wrapper)
 [![Downloads](https://img.shields.io/npm/dm/do-wrapper.svg)](https://www.npmjs.com/package/do-wrapper)
 
-Digital Ocean API v2 - Node.js Wrapper
+### Install
 
-If you spot any mistakes or have any suggestions, please raise an issue here:
-https://github.com/matt-major/do-wrapper/issues
+```do-wrapper``` is available on ```npm``` and as such, can be installed through ```npm``` with ease.
 
-## Install
-You can install ```do-wrapper``` directly from npm.
+To install ```do-wrapper``` and add it to your ```package.json``` file, use the following command:
 
 ```sh
-$ npm install do-wrapper
+$ npm install --save do-wrapper
 ```
 
-### Generate Documentation
+### Documentation
+
 All methods are documented with jsDocs and can be built in to web-page based documentation by running the command below.
 
 ```sh
 $ npm run doc
 ```
 
-##License
+### Issues
+
+Please raise an issue on GitHub with as much information as possible and the steps to replicate (if possible).
+
+### License
 The MIT License (MIT)
 
 Copyright (c) 2015 Matt Major
