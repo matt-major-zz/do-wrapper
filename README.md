@@ -23,6 +23,44 @@ All methods are documented with jsDocs and can be built in to web-page based doc
 $ npm run doc
 ```
 
+### Usage
+
+In order to use ```do-wrapper``` you will need to generate an API key on the DigitalOcean website. Once you have this, add the library to your project with the following command:
+
+```sh
+$ npm install --save do-wrapper
+```
+
+Once installed you need to instantiate a new copy of ```do-wrapper``` in your application, like so:
+
+```js
+var DigitalOcean = require('do-wrapper'),
+    api = new DigitalOcean('[api_key]', [per_page_size]);
+```
+*Note: replace [api_key] and [per_page_size] with your API key and desired page size.*
+
+You can now test that your API key is correct and that everything is working by checking for your account information:
+```js
+api.account(function (err, res, body) {
+  console.log(body);
+});
+```
+
+If you get back a response similar to the below, success!
+
+```json
+{
+  "account": {
+    "droplet_limit": 5,
+    "email": "do-wrapper@do-wrapper.com",
+    "uuid": "57e96b88ed1511e490ec1681e6b88ec1",
+    "email_verified": true
+  }
+}
+```
+
+*Note: I've replaced my actual information with some dummy values..."
+
 ### Issues
 
 Please raise an issue on GitHub with as much information as possible and the steps to replicate (if possible).
