@@ -59,7 +59,7 @@ If you get back a response similar to the below, success!
 }
 ```
 
-*Note: I've replaced my actual information with some dummy values..."
+*Note: I've replaced my actual information with some dummy values...*
 
 ### Issues
 
