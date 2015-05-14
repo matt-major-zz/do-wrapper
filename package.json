@@ -8,14 +8,12 @@
     "type": "git",
     "url": "https://github.com/matt-major/do-wrapper.git"
   },
-  "main": "./lib/do-wrapper.js",
+  "main": "./dist/do-wrapper.js",
   "scripts": {
-    "test": "jshint lib/*.js",
-    "doc": "./node_modules/.bin/jsdoc lib/*.js -d doc"
-  },
-  "dependencies": {
-    "request": "latest",
-    "xtend": "latest"
+    "postinstall": "npm run build && npm run test",
+    "build": "tsc src/*.ts --outDir dist/ --module \"commonjs\"",
+    "test": "jshint dist/*.js",
+    "doc": "./node_modules/.bin/jsdoc dist/*.js -d doc"
   },
   "license": "MIT",
   "bugs": {
@@ -29,6 +27,10 @@
     "javascript",
     "wrapper"
   ],
+  "preferGlobal": true,
+  "dependencies": {
+    "request": "2.55.0"
+  },
   "devDependencies": {
     "jsdoc": "^3.3.0-beta3",
     "jshint": "2.6.3"
