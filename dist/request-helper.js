@@ -1,4 +1,5 @@
 ///<reference path="../definitions/request.d.ts" />
+'use strict';
 var request = require('request');
 /**
  * Request Helper Module
@@ -7,7 +8,7 @@ var RequestHelper = (function () {
     /**
      * Request Helper
      *
-     * @param {string} accessToken - Your Private API Token
+     * @param {string} token - Your Private API Token
      *
      * @constructor
      */
@@ -57,7 +58,7 @@ var RequestHelper = (function () {
      * @param {*} callback - Function to execute on completion
      */
     RequestHelper.prototype.getAllPages = function (key, options, callback) {
-        var items = [], total = 0, required = 0, completed = 0;
+        var items = [], total = 0, required = 0, completed = 1;
         options.qs.page = 1;
         this.submitRequest(options, function (err, response, body) {
             if (err) {
@@ -70,7 +71,7 @@ var RequestHelper = (function () {
                 return callback(null, response, items);
             }
             else {
-                this.getRemaining(options, 2, required, function (err, response, body) {
+                this.getRemainingPages(options, 2, required, function (err, response, body) {
                     if (err) {
                         callback(err);
                     }

@@ -1,3 +1,4 @@
+'use strict';
 var RequestHelper = require('./request-helper');
 /**
  * Digital Ocean API Wrapper
@@ -6,8 +7,8 @@ var DigitalOcean = (function () {
     /**
      * Digital Ocean API Wrapper
      *
-     * @param {string} accessToken - Your Private API Token
-     * @param {number} per_page - Size of results to return
+     * @param {string} token - Your Private API Token
+     * @param {number} perPage - Size of results to return
      *
      * @constructor
      */
@@ -38,12 +39,12 @@ var DigitalOcean = (function () {
         this.requestHelper.request(options, callback);
     };
     /**
- * Get Action Information for Account
- * Info: {@link https://developers.digitalocean.com/documentation/v2/#retrieve-an-existing-action retrieve-an-existing-action}
- *
- * @param {number} actionId - The Id of the Action
- * @param {*} callback - Function to execute on completion
- */
+     * Get Action Information for Account
+     * Info: {@link https://developers.digitalocean.com/documentation/v2/#retrieve-an-existing-action retrieve-an-existing-action}
+     *
+     * @param {number} actionId - The Id of the Action
+     * @param {*} callback - Function to execute on completion
+     */
     DigitalOcean.prototype.accountGetAction = function (actionId, callback) {
         var options = {
             actionPath: 'actions/' + actionId
