@@ -20,12 +20,13 @@
     "url": "https://github.com/matt-major/do-wrapper/issues"
   },
   "keywords": [
-    "digitalocean",
     "digital ocean",
+    "digitalocean",
+    "droplet",
+    "cloud",
+    "wrapper",
     "api",
-    "node",
-    "javascript",
-    "wrapper"
+    "typescript"
   ],
   "preferGlobal": true,
   "dependencies": {
