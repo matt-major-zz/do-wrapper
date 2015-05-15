@@ -1,11 +1,20 @@
 ///<reference path="../definitions/request.d.ts" />
+'use strict';
 
 import request = require('request');
+
+interface IRequestHelper {
+  request(options: any, callback: () => any): void;
+  submitRequest(options: any, callback: (...args: any[]) => any): void;
+  getAllPages(key: string, options: any, callback: (...args: any[]) => any): void;
+  getRemainingPages(options: any, first: number, last: number, callback: (...args: any[]) => any): void;
+  requestBuilder(options: any): any;
+}
 
 /**
  * Request Helper Module
  */
-class RequestHelper {
+class RequestHelper implements IRequestHelper {
 
   /**
    * Request Headers
@@ -52,7 +61,7 @@ class RequestHelper {
    * @param {*} options - Request Options Object
    * @param {*} callback - Function to execute on completion
    */
-  private submitRequest(options: any, callback: (...args: any[]) => any): void {
+  public submitRequest(options: any, callback: (...args: any[]) => any): void {
     var requestOptions = this.requestBuilder(options);
     request(requestOptions, function (err: any, response: any, body: any): void {
       if ( err ) {
@@ -70,7 +79,7 @@ class RequestHelper {
    * @param {*} options - Request Options
    * @param {*} callback - Function to execute on completion
    */
-  private getAllPages(key: string, options: any, callback: (...args: any[]) => any): void {
+  public getAllPages(key: string, options: any, callback: (...args: any[]) => any): void {
 
     var items: any[] = [],
       total: number = 0,
@@ -125,7 +134,7 @@ class RequestHelper {
    * @param {number} last - The last page to retrieve
    * @param {*} callback - Function to execute on completion
    */
-  private getRemainingPages(options: any, first: number, last: number, callback: (...args: any[]) => any): void {
+  public getRemainingPages(options: any, first: number, last: number, callback: (...args: any[]) => any): void {
     for ( var current = first; current <= last; current++ ) {
       options.qs.page = current;
       this.submitRequest(options, callback);
@@ -139,7 +148,7 @@ class RequestHelper {
    *
    * @returns {*}
    */
-  private requestBuilder(options: any): any {
+  public requestBuilder(options: any): any {
     return {
       uri: this.apiUrl + options.actionPath,
       method: options.method || 'GET',

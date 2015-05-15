@@ -1,10 +1,49 @@
+'use strict';
+
 import RequestHelper = require('./request-helper');
 
-/**
- * Digital Ocean API Wrapper Interface
- */
 interface IDigitalOcean {
   account(callback: () => any): void;
+  accountGetActions(query: any, callback: () => any): void;
+  accountGetAction(actionId: number, callback: () => any): void;
+  accountGetKeys(query: any, callback: () => any): void;
+  accountAddKey(configuration: any, callback: () => any): void;
+  accountGetKeyById(keyId: number, callback: () => any): void;
+  accountGetKeyByFingerprint(fingerprint: string, callback: () => any): void;
+  accountRenameKey(keyIdentity: any, keyName: string, callback: () => any): void;
+  accountDeleteKey(keyIdentity: any, callback: () => any): void;
+  dropletsGetAll(query: any, callback: () => any): void;
+  dropletsGetKernels(dropletId: number, query: any, callback: () => any): void;
+  dropletsGetSnapshots(dropletId: number, query: any, callback: () => any): void;
+  dropletsGetBackups(dropletId: number, query: any, callback: () => any): void;
+  dropletsGetActions(dropletId: number, query: any, callback: () => any): void;
+  dropletsCreate(configuration: any, callback: () => any): void;
+  dropletsGetById(dropletId: number, callback: () => any): void;
+  dropletsDelete(dropletId: number, callback: () => any): void;
+  dropletsGetNeighbors(dropletId: number, callback: () => any): void;
+  dropletsGetNeighborsReport(callback: () => any): void;
+  dropletsGetUpgrades(callback: () => any): void;
+  dropletsRequestAction(dropletId: number, action: any, callback: () => any): void;
+  dropletsGetAction(dropletId: number, actionId: number, callback: () => any): void;
+  domainsGetAll(query: any, callback: () => any): void;
+  domainsCreate(name: string, ip: string, callback: () => any): void;
+  domainsGet(name: string, callback: () => any): void;
+  domainsDelete(name: string, callback: () => any): void;
+  domainRecordsGetAll(name: string, query: any, callback: () => any): void;
+  domainRecordsCreate(name: string, configuration: any, callback: () => any): void;
+  domainRecordsGet(name: string, domainRecordId: number, callback: () => any): void;
+  domainRecordsUpdate(name: string, domainRecordId: number, configuration: any, callback: () => any): void;
+  domainRecordsDelete(name: string, domainRecordId: number, callback: () => any): void;
+  regionsGetAll(query: any, callback: () => any): void;
+  sizesGetAll(query: any, callback: () => any): void;
+  imagesGetAll(query: any, callback: () => any): void;
+  imagesGetById(imageId: number, callback: () => any): void;
+  imagesGetBySlug(slug: string, callback: () => any): void;
+  imagesGetActions(imageId: number, query: any, callback: () => any): void;
+  imagesUpdate(imageId: number, name: string, callback: () => any): void;
+  imagesDelete(imageId: number, callback: () => any): void;
+  imagesRequestAction(imageId: number, action: any, callback: () => any): void;
+  imagesGetAction(imageId: number, actionId: number, callback: () => any): void;
 }
 
 /**
@@ -68,7 +107,7 @@ class DigitalOcean implements IDigitalOcean {
    */
   public accountGetAction(actionId: number, callback: () => any): void {
     var options: any = {
-      actionPath: 'actions/' + actionId,
+      actionPath: 'actions/' + actionId
     };
     this.requestHelper.request(options, callback);
   }
