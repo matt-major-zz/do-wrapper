@@ -11,9 +11,9 @@
   "main": "./dist/do-wrapper.js",
   "scripts": {
     "postinstall": "npm run build && npm run test",
-    "build": "./node_modules/typescript/bin/tsc src/*.ts --outDir dist/ --module \"commonjs\"",
-    "test": "./node_modules/jshint/bin/jshint dist/*.js",
-    "doc": "./node_modules/.bin/jsdoc dist/*.js -d doc"
+    "build": "tsc src/*.ts --outDir dist/ --module \"commonjs\"",
+    "test": "jshint dist/*.js",
+    "doc": "jsdoc dist/*.js -d doc"
   },
   "license": "MIT",
   "bugs": {
