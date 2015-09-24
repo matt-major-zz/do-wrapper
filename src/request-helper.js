@@ -1,39 +1,14 @@
-///<reference path="../definitions/request.d.ts" />
 'use strict';
 
-import request = require('request');
+import request from 'request';
 
-interface IRequestHelper {
-  request(options: any, callback: () => any): void;
-  submitRequest(options: any, callback: (...args: any[]) => any): void;
-  getAllPages(key: string, options: any, callback: (...args: any[]) => any): void;
-  getRemainingPages(options: any, first: number, last: number, callback: (...args: any[]) => any): void;
-  requestBuilder(options: any): any;
-}
-
-/**
- * Request Helper Module
- */
-class RequestHelper implements IRequestHelper {
-
-  /**
-   * Request Headers
-   */
-  private headers: any;
-
-  /**
-   * Digital Ocean API URL
-   */
-  private apiUrl: string;
-
+export default class RequestHelper {
   /**
    * Request Helper
-   *
    * @param {string} token - Your Private API Token
-   *
    * @constructor
    */
-  constructor(token: string) {
+  constructor(token) {
     this.headers = {
       'authorization': 'Bearer ' + token,
       'content_type': 'application/json'
@@ -43,11 +18,10 @@ class RequestHelper implements IRequestHelper {
 
   /**
    * Check the required Request & Trigger
-   *
    * @param {*} options - Request Options
    * @param {*} callback - Function to execute on completion
    */
-  public request(options: any, callback: () => any): void {
+  request(options, callback) {
     if ( options.includeAll ) {
       this.getAllPages(options.key, options, callback);
     } else {
@@ -57,13 +31,12 @@ class RequestHelper implements IRequestHelper {
 
   /**
    * Submit the Request
-   *
    * @param {*} options - Request Options Object
    * @param {*} callback - Function to execute on completion
    */
-  public submitRequest(options: any, callback: (...args: any[]) => any): void {
+  submitRequest(options, callback) {
     var requestOptions = this.requestBuilder(options);
-    request(requestOptions, function (err: any, response: any, body: any): void {
+    request(requestOptions, function (err, response, body) {
       if ( err ) {
         callback(err);
       } else {
@@ -74,67 +47,50 @@ class RequestHelper implements IRequestHelper {
 
   /**
    * Get All Pages
-   *
    * @param {string} key - Type of Item
    * @param {*} options - Request Options
    * @param {*} callback - Function to execute on completion
    */
-  public getAllPages(key: string, options: any, callback: (...args: any[]) => any): void {
-
-    var items: any[] = [],
-      total: number = 0,
-      required: number = 0,
-      completed: number = 1;
+  getAllPages(key, options, callback) {
+    var items = [],
+      total = 0,
+      required = 0,
+      completed = 1;
 
     options.qs.page = 1;
 
-    this.submitRequest(options, function (err: any, response: any, body: any): void {
-
+    this.submitRequest(options, function (err, response, body) {
       if ( err ) {
         callback(err);
       }
-
       total = body.meta.total;
       items = items.concat(body[key]);
       required = total / (options.qs.per_page || 25);
-
       if ( items.length >= total ) {
-
         return callback(null, response, items);
-
       } else {
-
-        this.getRemainingPages(options, 2, required, function (err: any, response: any, body: any): void {
-
+        this.getRemainingPages(options, 2, required, function (err, response, body) {
           if ( err ) {
             callback(err);
           }
-
           completed++;
-
           items = items.concat(body[key]);
-
           if ( completed === required ) {
             callback(null, response, items);
           }
-
         });
-
       }
-
     }.bind(this));
-
   }
 
   /**
    * Get the Remaining Pages
-   *
    * @param {*} options - Request Options
    * @param {number} first - The first page to retrieve
    * @param {number} last - The last page to retrieve
    * @param {*} callback - Function to execute on completion
    */
-  public getRemainingPages(options: any, first: number, last: number, callback: (...args: any[]) => any): void {
+  getRemainingPages(options, first, last, callback) {
     for ( var current = first; current <= last; current++ ) {
       options.qs.page = current;
       this.submitRequest(options, callback);
@@ -143,12 +99,10 @@ class RequestHelper implements IRequestHelper {
 
   /**
    * Build Options for Request
-   *
    * @param {*} options - Options Object
-   *
    * @returns {*}
    */
-  public requestBuilder(options: any): any {
+  requestBuilder(options) {
     return {
       uri: this.apiUrl + options.actionPath,
       method: options.method || 'GET',
@@ -157,9 +111,6 @@ class RequestHelper implements IRequestHelper {
       strictSSL: true,
       json: true,
       qs: options.qs || {}
-    }
+    };
   }
-
 }
-
-export = RequestHelper;
