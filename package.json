@@ -24,7 +24,8 @@
     "cloud",
     "wrapper",
     "api",
-    "typescript"
+    "babel",
+    "es6"
   ],
   "dependencies": {
     "request": "2.61.0"

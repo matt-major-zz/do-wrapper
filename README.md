@@ -1,4 +1,4 @@
-# do-wrapper 
+# do-wrapper
 ### A Node.js wrapper for the Digital Ocean v2 API
 
 [![Build Status](https://travis-ci.org/matt-major/do-wrapper.svg?branch=master)](https://travis-ci.org/matt-major/do-wrapper)
@@ -15,14 +15,6 @@ To install ```do-wrapper``` and add it to your ```package.json``` file, use the 
 $ npm install --save do-wrapper
 ```
 
-### Documentation
-
-All methods are documented with jsDocs and can be built in to web-page based documentation by running the command below.
-
-```sh
-$ npm run doc
-```
-
 ### Usage
 
 In order to use ```do-wrapper``` you will need to generate an API key on the DigitalOcean website. Once you have this, add the library to your project with the following command:
@@ -35,7 +27,7 @@ Once installed you need to instantiate a new copy of ```do-wrapper``` in your ap
 
 ```js
 var DigitalOcean = require('do-wrapper'),
-    api = new DigitalOcean('[api_key]', [per_page_size]);
+    api = new DigitalOcean('[api_key]', [page_size]);
 ```
 *Note: replace [api_key] and [per_page_size] with your API key and desired page size.*
 
