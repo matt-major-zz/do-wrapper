@@ -28,7 +28,8 @@
     "es6"
   ],
   "dependencies": {
-    "request": "2.61.0"
+    "request": "2.61.0",
+    "jshint": "2.8.0"
   },
   "devDependencies": {
     "gulp": "3.9.0",
