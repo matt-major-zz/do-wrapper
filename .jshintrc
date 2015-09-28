@@ -12,7 +12,7 @@
   "eqeqeq": true,
   "eqnull": false,
   "es5": false,
-  "esnext": false,
+  "esnext": true,
   "evil": false,
   "expr": false,
   "forin": true,

@@ -1,96 +1,40 @@
 'use strict';
 
-import RequestHelper = require('./request-helper');
+import RequestHelper from './request-helper';
 
-interface IDigitalOcean {
-  account(callback: () => any): void;
-  accountGetActions(query: any, callback: () => any): void;
-  accountGetAction(actionId: number, callback: () => any): void;
-  accountGetKeys(query: any, callback: () => any): void;
-  accountAddKey(configuration: any, callback: () => any): void;
-  accountGetKeyById(keyId: number, callback: () => any): void;
-  accountGetKeyByFingerprint(fingerprint: string, callback: () => any): void;
-  accountRenameKey(keyIdentity: any, keyName: string, callback: () => any): void;
-  accountDeleteKey(keyIdentity: any, callback: () => any): void;
-  dropletsGetAll(query: any, callback: () => any): void;
-  dropletsGetKernels(dropletId: number, query: any, callback: () => any): void;
-  dropletsGetSnapshots(dropletId: number, query: any, callback: () => any): void;
-  dropletsGetBackups(dropletId: number, query: any, callback: () => any): void;
-  dropletsGetActions(dropletId: number, query: any, callback: () => any): void;
-  dropletsCreate(configuration: any, callback: () => any): void;
-  dropletsGetById(dropletId: number, callback: () => any): void;
-  dropletsDelete(dropletId: number, callback: () => any): void;
-  dropletsGetNeighbors(dropletId: number, callback: () => any): void;
-  dropletsGetNeighborsReport(callback: () => any): void;
-  dropletsGetUpgrades(callback: () => any): void;
-  dropletsRequestAction(dropletId: number, action: any, callback: () => any): void;
-  dropletsGetAction(dropletId: number, actionId: number, callback: () => any): void;
-  domainsGetAll(query: any, callback: () => any): void;
-  domainsCreate(name: string, ip: string, callback: () => any): void;
-  domainsGet(name: string, callback: () => any): void;
-  domainsDelete(name: string, callback: () => any): void;
-  domainRecordsGetAll(name: string, query: any, callback: () => any): void;
-  domainRecordsCreate(name: string, configuration: any, callback: () => any): void;
-  domainRecordsGet(name: string, domainRecordId: number, callback: () => any): void;
-  domainRecordsUpdate(name: string, domainRecordId: number, configuration: any, callback: () => any): void;
-  domainRecordsDelete(name: string, domainRecordId: number, callback: () => any): void;
-  regionsGetAll(query: any, callback: () => any): void;
-  sizesGetAll(query: any, callback: () => any): void;
-  imagesGetAll(query: any, callback: () => any): void;
-  imagesGetById(imageId: number, callback: () => any): void;
-  imagesGetBySlug(slug: string, callback: () => any): void;
-  imagesGetActions(imageId: number, query: any, callback: () => any): void;
-  imagesUpdate(imageId: number, name: string, callback: () => any): void;
-  imagesDelete(imageId: number, callback: () => any): void;
-  imagesRequestAction(imageId: number, action: any, callback: () => any): void;
-  imagesGetAction(imageId: number, actionId: number, callback: () => any): void;
-}
-
-/**
- * Digital Ocean API Wrapper
- */
-class DigitalOcean implements IDigitalOcean {
-
-  /**
-   * Number of results per page
-   */
-  private perPage: number;
-
-  /**
-   * Request Helper Instance
-   */
-  private requestHelper: any;
-
+export default class DigitalOcean {
   /**
    * Digital Ocean API Wrapper
-   *
    * @param {string} token - Your Private API Token
-   * @param {number} perPage - Size of results to return
-   *
+   * @param {number} size - Page Size of results to return
    * @constructor
    */
-  constructor(token: string, perPage: number) {
-    this.perPage = perPage;
+  constructor(token, size) {
+    this.per_page = size;
     this.requestHelper = new RequestHelper(token);
   }
 
   /**
    * Get Account Information
    * Info {@link https://developers.digitalocean.com/documentation/v2/#account account}
-   *
    * @param {*} callback - Function to execute on completion
    */
-  public account(callback: () => any): void {
-    var options: any = {actionPath: 'account'};
+  account(callback) {
+    let options = {actionPath: 'account'};
     this.requestHelper.request(options, callback);
   }
 
-  public accountGetActions(query: any, callback: () => any): void {
-    var options: any = {
+  /**
+   * Get Account Actions
+   * @param {*} query - Query Options
+   * @param {*} callback - Function to execute on completion
+   */
+  accountGetActions(query, callback) {
+    let options = {
       actionPath: 'actions',
       key: 'actions',
       qs: {
-        per_page: query.per_page || this.perPage,
+        per_page: query.per_page || this.per_page,
         page: query.page || 1
       },
       includeAll: query.includeAll || false
@@ -105,8 +49,8 @@ class DigitalOcean implements IDigitalOcean {
    * @param {number} actionId - The Id of the Action
    * @param {*} callback - Function to execute on completion
    */
-  public accountGetAction(actionId: number, callback: () => any): void {
-    var options: any = {
+  accountGetAction(actionId, callback) {
+    let options = {
       actionPath: 'actions/' + actionId
     };
     this.requestHelper.request(options, callback);
@@ -119,12 +63,12 @@ class DigitalOcean implements IDigitalOcean {
    * @param {*} query - Query Options
    * @param {*} callback - Function to execute on completion
    */
-  public accountGetKeys(query: any, callback: () => any): void {
-    var options: any = {
+  accountGetKeys(query, callback) {
+    let options = {
       actionPath: 'account/keys',
       key: 'ssh_keys',
       qs: {
-        per_page: query.per_page || this.perPage,
+        per_page: query.per_page || this.per_page,
         page: query.page || 1
       },
       includeAll: query.includeAll || false
@@ -139,8 +83,8 @@ class DigitalOcean implements IDigitalOcean {
    * @param {*} configuration - Information required to create SSH Key | {name: ?, public_key: ?}
    * @param {*} callback - Function to execute on completion
    */
-  public accountAddKey(configuration: any, callback: () => any): void {
-    var options: any = {
+  accountAddKey(configuration, callback) {
+    let options = {
       actionPath: 'account/keys',
       method: 'POST',
       body: configuration
@@ -155,8 +99,8 @@ class DigitalOcean implements IDigitalOcean {
    * @param {number} keyId - The Id of the Key
    * @param {*} callback - Function to execute on completion
    */
-  public accountGetKeyById(keyId: number, callback: () => any): void {
-    var options: any = {
+  accountGetKeyById(keyId, callback) {
+    let options = {
       actionPath: 'account/keys/' + keyId
     };
     this.requestHelper.request(options, callback);
@@ -169,8 +113,8 @@ class DigitalOcean implements IDigitalOcean {
    * @param {string} fingerprint - The Fingerprint of the Key
    * @param {*} callback - Function to execute on completion
    */
-  public accountGetKeyByFingerprint(fingerprint: string, callback: () => any): void {
-    var options: any = {
+  accountGetKeyByFingerprint(fingerprint, callback) {
+    let options = {
       actionPath: 'account/keys/' + fingerprint
     };
     this.requestHelper.request(options, callback);
@@ -184,8 +128,8 @@ class DigitalOcean implements IDigitalOcean {
    * @param {string} keyName - What to rename the SSH Key to
    * @param {*} callback - Function to execute on completion
    */
-  public accountRenameKey(keyIdentity: any, keyName: string, callback: () => any): void {
-    var options: any = {
+  accountRenameKey(keyIdentity, keyName, callback) {
+    let options = {
       actionPath: 'account/keys/' + keyIdentity,
       method: 'PUT',
       body: {
@@ -202,8 +146,8 @@ class DigitalOcean implements IDigitalOcean {
    * @param {*} keyIdentity - The Id or Fingerprint of the SSH Key
    * @param {*} callback - Function to execute on completion
    */
-  public accountDeleteKey(keyIdentity: any, callback: () => any): void {
-    var options: any = {
+  accountDeleteKey(keyIdentity, callback) {
+    let options = {
       actionPath: 'account/keys/' + keyIdentity,
       method: 'DELETE'
     };
@@ -217,12 +161,12 @@ class DigitalOcean implements IDigitalOcean {
    * @param {*} query - Query Options
    * @param {*} callback - Function to execute on completion
    */
-  public dropletsGetAll(query: any, callback: () => any): void {
-    var options: any = {
+  dropletsGetAll(query, callback) {
+    let options = {
       actionPath: 'droplets',
       key: 'droplets',
       qs: {
-        per_page: query.per_page || this.perPage,
+        per_page: query.per_page || this.per_page,
         page: query.page || 1
       },
       includeAll: query.includeAll || false
@@ -238,12 +182,12 @@ class DigitalOcean implements IDigitalOcean {
    * @param {*} query - Query Options
    * @param {*} callback - Function to execute on completion
    */
-  public dropletsGetKernels(dropletId: number, query: any, callback: () => any): void {
-    var options: any = {
+  dropletsGetKernels(dropletId, query, callback) {
+    let options = {
       actionPath: 'droplets/' + dropletId + '/kernels',
       key: 'kernels',
       qs: {
-        per_page: query.per_page || this.perPage,
+        per_page: query.per_page || this.per_page,
         page: query.page || 1
       },
       includeAll: query.includeAll || false
@@ -259,12 +203,12 @@ class DigitalOcean implements IDigitalOcean {
    * @param {*} query - Query Options
    * @param {*} callback - Function to execute on completion
    */
-  public dropletsGetSnapshots(dropletId: number, query: any, callback: () => any): void {
-    var options: any = {
+  dropletsGetSnapshots(dropletId, query, callback) {
+    let options = {
       actionPath: 'droplets/' + dropletId + '/snapshots',
       key: 'snapshots',
       qs: {
-        per_page: query.per_page || this.perPage,
+        per_page: query.per_page || this.per_page,
         page: query.page || 1
       },
       includeAll: query.includeAll || false
@@ -280,12 +224,12 @@ class DigitalOcean implements IDigitalOcean {
    * @param {*} query - Query Options
    * @param {*} callback - Function to execute on completion
    */
-  public dropletsGetBackups(dropletId: number, query: any, callback: () => any): void {
-    var options: any = {
+  dropletsGetBackups(dropletId, query, callback) {
+    let options = {
       actionPath: 'droplets/' + dropletId + '/backups',
       key: 'backups',
       qs: {
-        per_page: query.per_page || this.perPage,
+        per_page: query.per_page || this.per_page,
         page: query.page || 1
       },
       includeAll: query.includeAll || false
@@ -301,12 +245,12 @@ class DigitalOcean implements IDigitalOcean {
    * @param {*} query - Query Options
    * @param {*} callback - Function to execute on completion
    */
-  public dropletsGetActions(dropletId: number, query: any, callback: () => any): void {
-    var options: any = {
+  dropletsGetActions(dropletId, query, callback) {
+    let options = {
       actionPath: 'droplets/' + dropletId + '/actions',
       key: 'actions',
       qs: {
-        per_page: query.per_page || this.perPage,
+        per_page: query.per_page || this.per_page,
         page: query.page || 1
       },
       includeAll: query.includeAll || false
@@ -321,8 +265,8 @@ class DigitalOcean implements IDigitalOcean {
    * @param {*} configuration - Creation parameters, see info for more details.
    * @param {*} callback - Function to execute on completion
    */
-  public dropletsCreate(configuration: any, callback: () => any): void {
-    var options: any = {
+  dropletsCreate(configuration, callback) {
+    let options = {
       actionPath: 'droplets',
       method: 'POST',
       body: configuration
@@ -337,8 +281,8 @@ class DigitalOcean implements IDigitalOcean {
    * @param {number} dropletId - The Id of the Droplet
    * @param {*} callback - Function to execute on completion
    */
-  public dropletsGetById(dropletId: number, callback: () => any): void {
-    var options: any = {
+  dropletsGetById(dropletId, callback) {
+    let options = {
       actionPath: 'droplets/' + dropletId
     };
     this.requestHelper.request(options, callback);
@@ -351,8 +295,8 @@ class DigitalOcean implements IDigitalOcean {
    * @param {number} dropletId - The Id of the Droplet
    * @param {*} callback - Function to execute on completion
    */
-  public dropletsDelete(dropletId: number, callback: () => any): void {
-    var options: any = {
+  dropletsDelete(dropletId, callback) {
+    let options = {
       actionPath: 'droplets/' + dropletId,
       method: 'DELETE'
     };
@@ -366,8 +310,8 @@ class DigitalOcean implements IDigitalOcean {
    * @param {number} dropletId - The Id of the Droplet
    * @param {*} callback - Function to execute on completion
    */
-  public dropletsGetNeighbors(dropletId: number, callback: () => any): void {
-    var options: any = {
+  dropletsGetNeighbors(dropletId, callback) {
+    let options = {
       actionPath: 'droplets/' + dropletId + '/neighbors'
     };
     this.requestHelper.request(options, callback);
@@ -379,8 +323,8 @@ class DigitalOcean implements IDigitalOcean {
    *
    * @param {*} callback - Function to execute on completion
    */
-  public dropletsGetNeighborsReport(callback: () => any): void {
-    var options: any = {
+  dropletsGetNeighborsReport(callback) {
+    let options = {
       actionPath: 'reports/droplet_neighbors'
     };
     this.requestHelper.request(options, callback);
@@ -392,8 +336,8 @@ class DigitalOcean implements IDigitalOcean {
    *
    * @param {*} callback - Function to execute on completion
    */
-  public dropletsGetUpgrades(callback: () => any): void {
-    var options: any = {
+  dropletsGetUpgrades(callback) {
+    let options = {
       actionPath: 'droplet_upgrades'
     };
     this.requestHelper.request(options, callback);
@@ -407,8 +351,8 @@ class DigitalOcean implements IDigitalOcean {
    * @param {*} action - Action Object
    * @param {*} callback - Function to execute on completion
    */
-  public dropletsRequestAction(dropletId: number, action: any, callback: () => any): void {
-    var options: any = {
+  dropletsRequestAction(dropletId, action, callback) {
+    let options = {
       actionPath: 'droplets/' + dropletId + '/actions',
       method: 'POST',
       body: action
@@ -424,8 +368,8 @@ class DigitalOcean implements IDigitalOcean {
    * @param {number} actionId - The Id of the Action
    * @param {*} callback - Function to execute on completion
    */
-  public dropletsGetAction(dropletId: number, actionId: number, callback: () => any): void {
-    var options: any = {
+  dropletsGetAction(dropletId, actionId, callback) {
+    let options = {
       actionPath: 'droplets/' + dropletId + '/actions/' + actionId
     };
     this.requestHelper.request(options, callback);
@@ -438,12 +382,12 @@ class DigitalOcean implements IDigitalOcean {
    * @param {*} query - Query Options
    * @param {*} callback - Function to execute on completion
    */
-  public domainsGetAll(query: any, callback: () => any): void {
-    var options: any = {
+  domainsGetAll(query, callback) {
+    let options = {
       actionPath: 'domains',
       key: 'domains',
       qs: {
-        per_page: query.per_page || this.perPage,
+        per_page: query.per_page || this.per_page,
         page: query.page || 1
       }
     };
@@ -458,8 +402,8 @@ class DigitalOcean implements IDigitalOcean {
    * @param {string} ip - The Ip of the Droplet
    * @param {*} callback - Function to execute on completion
    */
-  public domainsCreate(name: string, ip: string, callback: () => any): void {
-    var options: any = {
+  domainsCreate(name, ip, callback) {
+    let options = {
       actionPath: 'domains',
       method: 'POST',
       body: {name: name, ip_address: ip}
@@ -474,8 +418,8 @@ class DigitalOcean implements IDigitalOcean {
    * @param {string} name - The Domain Name
    * @param {*} callback - Function to execute on completion
    */
-  public domainsGet(name: string, callback: () => any): void {
-    var options: any = {
+  domainsGet(name, callback) {
+    let options = {
       actionPath: 'domains/' + name
     };
     this.requestHelper.request(options, callback);
@@ -488,8 +432,8 @@ class DigitalOcean implements IDigitalOcean {
    * @param {string} name - The Domain Name
    * @param {*} callback - Function to execute on completion
    */
-  public domainsDelete(name: string, callback: () => any): void {
-    var options: any = {
+  domainsDelete(name, callback) {
+    let options = {
       actionPath: 'domains/' + name,
       method: 'DELETE'
     };
@@ -504,12 +448,12 @@ class DigitalOcean implements IDigitalOcean {
    * @param {*} query - Query Options
    * @param {*} callback - Function to execute on completion
    */
-  public domainRecordsGetAll(name: string, query: any, callback: () => any): void {
-    var options: any = {
+  domainRecordsGetAll(name, query, callback) {
+    let options = {
       actionPath: 'domains/' + name + '/records',
       key: 'domain_records',
       qs: {
-        per_page: query.per_page || this.perPage,
+        per_page: query.per_page || this.per_page,
         page: query.page || 1
       }
     };
@@ -524,8 +468,8 @@ class DigitalOcean implements IDigitalOcean {
    * @param {*} configuration - Data required to create the Domain Record
    * @param {*} callback - Function to execute on completion
    */
-  public domainRecordsCreate(name: string, configuration: any, callback: () => any): void {
-    var options: any = {
+  domainRecordsCreate(name, configuration, callback) {
+    let options = {
       actionPath: 'domains/' + name + '/records',
       method: 'POST',
       body: configuration
@@ -541,8 +485,8 @@ class DigitalOcean implements IDigitalOcean {
    * @param {number} domainRecordId - The Id of the Domain Record
    * @param {*} callback - Function to execute on completion
    */
-  public domainRecordsGet(name: string, domainRecordId: number, callback: () => any): void {
-    var options: any = {
+  domainRecordsGet(name, domainRecordId, callback) {
+    let options = {
       actionPath: 'domains/' + name + '/records/' + domainRecordId
     };
     this.requestHelper.request(options, callback);
@@ -557,8 +501,8 @@ class DigitalOcean implements IDigitalOcean {
    * @param {*} configuration - Data required to update the Domain Record
    * @param {*} callback - Function to execute on completion
    */
-  public domainRecordsUpdate(name: string, domainRecordId: number, configuration: any, callback: () => any): void {
-    var options: any = {
+  domainRecordsUpdate(name, domainRecordId, configuration, callback) {
+    let options = {
       actionPath: 'domains/' + name + '/records/' + domainRecordId,
       method: 'PUT',
       body: configuration
@@ -574,8 +518,8 @@ class DigitalOcean implements IDigitalOcean {
    * @param {number} domainRecordId - The Id of the Domain Record
    * @param {*} callback - Function to execute on completion
    */
-  public domainRecordsDelete(name: string, domainRecordId: number, callback: () => any): void {
-    var options: any = {
+  domainRecordsDelete(name, domainRecordId, callback) {
+    let options = {
       actionPath: 'domains/' + name + '/records/' + domainRecordId,
       method: 'DELETE'
     };
@@ -589,12 +533,12 @@ class DigitalOcean implements IDigitalOcean {
    * @param {*} query - Query Options
    * @param {*} callback - Function to execute on completion
    */
-  public regionsGetAll(query: any, callback: () => any): void {
-    var options: any = {
+  regionsGetAll(query, callback) {
+    let options = {
       actionPath: 'regions',
       key: 'regions',
       qs: {
-        per_page: query.per_page || this.perPage,
+        per_page: query.per_page || this.per_page,
         page: query.page || 1
       },
       includeAll: query.includeAll || false
@@ -603,18 +547,18 @@ class DigitalOcean implements IDigitalOcean {
   }
 
   /**
-   * Get all Droplet Sizes
-   * Info: {@link https://developers.digitalocean.com/documentation/v2/#list-all-sizes list-all-sizes}
+   * Get all Droplet pageSizes
+   * Info: {@link https://developers.digitalocean.com/documentation/v2/#list-all-pageSizes list-all-pageSizes}
    *
    * @param {*} query - Query Options
    * @param {*} callback - Function to execute on completion
    */
-  public sizesGetAll(query: any, callback: () => any): void {
-    var options: any = {
-      actionPath: 'sizes',
-      key: 'sizes',
+  pageSizesGetAll(query, callback) {
+    let options = {
+      actionPath: 'pageSizes',
+      key: 'pageSizes',
       qs: {
-        per_page: query.per_page || this.perPage,
+        per_page: query.per_page || this.per_page,
         page: query.page || 1
       },
       includeAll: query.includeAll || false
@@ -630,12 +574,12 @@ class DigitalOcean implements IDigitalOcean {
    * @param {*} query - Query Options
    * @param {*} callback - Function to execute on completion
    */
-  public imagesGetAll(query: any, callback: () => any): void {
-    var options: any = {
+  imagesGetAll(query, callback) {
+    let options = {
       actionPath: 'images',
       key: 'images',
       qs: {
-        per_page: query.per_page || this.perPage,
+        per_page: query.per_page || this.per_page,
         page: query.page || 1,
         private: query.private || false,
         type: query.type || null
@@ -652,8 +596,8 @@ class DigitalOcean implements IDigitalOcean {
    * @param {number} imageId - The Id of the Image
    * @param {*} callback - Function to execute on completion
    */
-  public imagesGetById(imageId: number, callback: () => any): void {
-    var options: any = {
+  imagesGetById(imageId, callback) {
+    let options = {
       actionPath: 'images/' + imageId
     };
     this.requestHelper.request(options, callback);
@@ -666,8 +610,8 @@ class DigitalOcean implements IDigitalOcean {
    * @param {string} slug - The Slug of the Image
    * @param {*} callback - Function to execute on completion
    */
-  public imagesGetBySlug(slug: string, callback: () => any): void {
-    var options: any = {
+  imagesGetBySlug(slug, callback) {
+    let options = {
       actionPath: 'images/' + slug
     };
     this.requestHelper.request(options, callback);
@@ -681,12 +625,12 @@ class DigitalOcean implements IDigitalOcean {
    * @param {*} query - Query Options
    * @param {*} callback - Function to execute on completion
    */
-  public imagesGetActions(imageId: number, query: any, callback: () => any): void {
-    var options: any = {
+  imagesGetActions(imageId, query, callback) {
+    let options = {
       actionPath: 'images/' + imageId + '/actions',
       key: 'actions',
       qs: {
-        per_page: query.per_page || this.perPage,
+        per_page: query.per_page || this.per_page,
         page: query.page || 1
       },
       includeAll: query.includeAll || false
@@ -702,8 +646,8 @@ class DigitalOcean implements IDigitalOcean {
    * @param {string} name - The Name to update the Image to
    * @param {*} callback - Function to execute on completion
    */
-  public imagesUpdate(imageId: number, name: string, callback: () => any): void {
-    var options: any = {
+  imagesUpdate(imageId, name, callback) {
+    let options = {
       actionPath: 'images/' + imageId,
       body: {name: name},
       method: 'PUT'
@@ -718,8 +662,8 @@ class DigitalOcean implements IDigitalOcean {
    * @param {number} imageId - The Id of the Image
    * @param {*} callback - Function to execute on completion
    */
-  public imagesDelete(imageId: number, callback: () => any): void {
-    var options: any = {
+  imagesDelete(imageId, callback) {
+    let options = {
       actionPath: 'images/' + imageId,
       method: 'DELETE'
     };
@@ -734,8 +678,8 @@ class DigitalOcean implements IDigitalOcean {
    * @param {*} action - Action Options
    * @param {*} callback - Function to execute on completion
    */
-  public imagesRequestAction(imageId: number, action: any, callback: () => any): void {
-    var options: any = {
+  imagesRequestAction(imageId, action, callback) {
+    let options = {
       actionPath: 'images/' + imageId + '/actions',
       method: 'POST',
       body: action
@@ -751,13 +695,10 @@ class DigitalOcean implements IDigitalOcean {
    * @param {number} actionId - The Id of the Action
    * @param {*} callback - Function to execute on completion
    */
-  public imagesGetAction(imageId: number, actionId: number, callback: () => any): void {
-    var options: any = {
+  imagesGetAction(imageId, actionId, callback) {
+    let options = {
       actionPath: 'images/' + imageId + '/actions/' + actionId
     };
     this.requestHelper.request(options, callback);
   }
-
 }
-
-export = DigitalOcean;

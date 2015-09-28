@@ -1,6 +1,6 @@
 {
   "name": "do-wrapper",
-  "version": "2.2.0",
+  "version": "3.0.0",
   "description": "Node.js Wrapper for Digital Ocean API v2",
   "author": "Matt Major",
   "homepage": "https://github.com/matt-major/do-wrapper",
@@ -10,10 +10,8 @@
   },
   "main": "./dist/do-wrapper.js",
   "scripts": {
-    "postinstall": "npm run build && npm run test",
-    "build": "tsc src/*.ts --outDir dist/ --module \"commonjs\"",
-    "test": "jshint dist/*.js",
-    "doc": "jsdoc dist/*.js -d doc"
+    "build": "gulp compile",
+    "test": "jshint src/*.js"
   },
   "license": "MIT",
   "bugs": {
@@ -26,14 +24,15 @@
     "cloud",
     "wrapper",
     "api",
-    "typescript"
+    "babel",
+    "es6"
   ],
   "dependencies": {
     "request": "2.61.0",
-    "jshint": "2.8.0",
-    "typescript": "1.6.0-beta"
+    "jshint": "2.8.0"
   },
   "devDependencies": {
-    "jsdoc": "3.3.2"
+    "gulp": "3.9.0",
+    "gulp-babel": "5.2.1"
   }
 }
