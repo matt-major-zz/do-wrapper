@@ -627,18 +627,18 @@ var DigitalOcean = (function () {
     }
 
     /**
-     * Get all Droplet pageSizes
-     * Info: {@link https://developers.digitalocean.com/documentation/v2/#list-all-pageSizes list-all-pageSizes}
+     * Get all Droplet sizes
+     * Info: {@link https://developers.digitalocean.com/documentation/v2/#list-all-sizes list-all-sizes}
      *
      * @param {*} query - Query Options
      * @param {*} callback - Function to execute on completion
      */
   }, {
-    key: 'pageSizesGetAll',
-    value: function pageSizesGetAll(query, callback) {
+    key: 'sizesGetAll',
+    value: function sizesGetAll(query, callback) {
       var options = {
-        actionPath: 'pageSizes',
-        key: 'pageSizes',
+        actionPath: 'sizes',
+        key: 'sizes',
         qs: {
           per_page: query.per_page || this.per_page,
           page: query.page || 1
