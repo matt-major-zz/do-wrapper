@@ -78,7 +78,7 @@ export default class DigitalOcean {
 
   /**
    * Add a new SSH Key
-   * Info: {@https://developers.digitalocean.com/documentation/v2/#create-a-new-key create-a-new-key}
+   * Info: {@link https://developers.digitalocean.com/documentation/v2/#create-a-new-key create-a-new-key}
    *
    * @param {*} configuration - Information required to create SSH Key | {name: ?, public_key: ?}
    * @param {*} callback - Function to execute on completion
@@ -218,7 +218,7 @@ export default class DigitalOcean {
 
   /**
    * Get a list of Backups for a Droplet
-   * Info: {@https://developers.digitalocean.com/documentation/v2/#list-backups-for-a-droplet list-backups-for-a-droplet}
+   * Info: {@link https://developers.digitalocean.com/documentation/v2/#list-backups-for-a-droplet list-backups-for-a-droplet}
    *
    * @param {number} dropletId - The Id of the Droplet
    * @param {*} query - Query Options
@@ -260,7 +260,7 @@ export default class DigitalOcean {
 
   /**
    * Create a New Droplet
-   * Info: {@link https://developers.digitalocean.com/documentation/v2/#create-a-new-droplet}
+   * Info: {@link https://developers.digitalocean.com/documentation/v2/#create-a-new-droplet create-a-new-droplet}
    *
    * @param {*} configuration - Creation parameters, see info for more details.
    * @param {*} callback - Function to execute on completion

@@ -10,8 +10,9 @@
   },
   "main": "./dist/do-wrapper.js",
   "scripts": {
-    "build": "gulp compile",
-    "test": "jshint src/*.js"
+    "build": "gulp compile && npm run doc",
+    "test": "jshint src/*.js",
+    "doc": "./node_modules/.bin/jsdoc src/*.js -d doc/"
   },
   "license": "MIT",
   "bugs": {
@@ -28,11 +29,12 @@
     "es6"
   ],
   "dependencies": {
-    "request": "2.61.0",
-    "jshint": "2.8.0"
+    "request": "2.61.0"
   },
   "devDependencies": {
     "gulp": "3.9.0",
-    "gulp-babel": "5.2.1"
+    "gulp-babel": "5.2.1",
+    "jsdoc": "^3.4.0",
+    "jshint": "2.8.0"
   }
 }
