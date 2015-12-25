@@ -701,4 +701,103 @@ export default class DigitalOcean {
     };
     this.requestHelper.request(options, callback);
   }
+
+  /**
+   * Get all Floating IPs
+   * Info: {@link https://developers.digitalocean.com/documentation/v2/#list-all-floating-ips list-all-floating-ips}
+   *
+   * @param {*} query - Query Options
+   * @param {*} callback - Function to execute on completion
+   */
+  floatingIpsGetAll(query, callback) {
+    let options = {
+      actionPath: 'floating_ips',
+      key: 'floating_ips',
+      qs: {
+        per_page: query.per_page || this.per_page,
+        page: query.page || 1
+      },
+      includeAll: query.includeAll || false
+    };
+    this.requestHelper.request(options, callback);
+  }
+
+  /**
+   * Create and assign a Floating IP to a specific droplet.
+   * Info: {@link https://developers.digitalocean.com/documentation/v2/#create-a-new-floating-ip-assigned-to-a-droplet create-a-new-floating-ip-assigned-to-a-droplet}
+   *
+   * @param {number} droplet_id - The ID of Droplet that the Floating IP will be assigned to.
+   * @param {*} callback - Function to execute on completion
+   */
+  floatingIpsAssignDroplet(droplet_id, callback) {
+
+  }
+
+  /**
+   * Create and assign a Floating IP to a region.
+   * Info: {@link https://developers.digitalocean.com/documentation/v2/#create-a-new-floating-ip-assigned-to-a-droplet create-a-new-floating-ip-assigned-to-a-droplet}
+   *
+   * @param {string} region - The slug identifier for the region the Floating IP will be reserved to.
+   * @param {*} callback - Function to execute on completion
+   */
+  floatingIpsAssignRegion(region, callback) {
+
+  }
+
+  /**
+   * Retrieve an existing Floating IP
+   * Info: {@link https://developers.digitalocean.com/documentation/v2/#retrieve-an-existing-floating-ip retrieve-an-existing-floating-ip}
+   *
+   * @param {string} ip_address - Floating IP address.
+   * @param {*} callback - Function to execute on completion
+   */
+  floatingIpsGet(ip_address, callback) {
+
+  }
+
+  /**
+   * Delete a Floating IP
+   * Info: {@link https://developers.digitalocean.com/documentation/v2/#delete-a-floating-ips delete-a-floating-ips}
+   *
+   * @param {string} ip_address - Floating IP address
+   * @param {*} callback - Function to execute on completion
+   */
+  floatingIpsDelete(ip_address, callback) {
+
+  }
+
+  /**
+   * Request an action on a Floating IP
+   * Info: {@link https://developers.digitalocean.com/documentation/v2/#floating-ip-actions floating-ip-actions}
+   *
+   * @param {string} ip_address - Floating IP address
+   * @param {*} action - Action options
+   * @param {*} callback - Function to execute on completion
+   */
+  floatingIpsRequestAction(ip_address, action, callback) {
+
+  }
+
+  /**
+   * List all actions for a Floating IP
+   * Info: {@link https://developers.digitalocean.com/documentation/v2/#list-all-actions-for-a-floating-ip list-all-actions-for-a-floating-ip}
+   *
+   * @param {string} ip_address - Floating IP address
+   * @param {*} callback - Function to execute on completion
+   */
+  floatingIpsGetActions(ip_address, callback) {
+
+  }
+
+  /**
+   * Retrieve an existing Floating IP action
+   * Info: {@link https://developers.digitalocean.com/documentation/v2/#retrieve-an-existing-floating-ip-action retrieve-an-existing-floating-ip-action}
+   *
+   * @param {string} ip_address - Floating IP address
+   * @param {number} actionId - The Id of the action
+   * @param {*} callback - Function to execute on completion
+   */
+  floatingIpsGetAction(ip_address, actionId, callback) {
+
+  }
 }
