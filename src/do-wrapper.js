@@ -730,7 +730,14 @@ export default class DigitalOcean {
    * @param {*} callback - Function to execute on completion
    */
   floatingIpsAssignDroplet(droplet_id, callback) {
-
+    let options = {
+      actionPath: 'floating_ips',
+      method: 'POST',
+      body: {
+        droplet_id: droplet_id
+      }
+    };
+    this.requestHelper.request(options, callback);
   }
 
   /**
@@ -741,7 +748,14 @@ export default class DigitalOcean {
    * @param {*} callback - Function to execute on completion
    */
   floatingIpsAssignRegion(region, callback) {
-
+    let options = {
+      actionPath: 'floating_ips',
+      method: 'POST',
+      body: {
+        region: region
+      }
+    };
+    this.requestHelper.request(options, callback);
   }
 
   /**
@@ -752,7 +766,10 @@ export default class DigitalOcean {
    * @param {*} callback - Function to execute on completion
    */
   floatingIpsGet(ip_address, callback) {
-
+    let options = {
+      actionPath: 'floating_ips/' + ip_address
+    };
+    this.requestHelper.request(options, callback);
   }
 
   /**
@@ -763,7 +780,11 @@ export default class DigitalOcean {
    * @param {*} callback - Function to execute on completion
    */
   floatingIpsDelete(ip_address, callback) {
-
+    let options = {
+      actionPath: 'floating_ips/' + ip_address,
+      method: 'DELETE'
+    };
+    this.requestHelper.request(options, callback);
   }
 
   /**
@@ -775,7 +796,12 @@ export default class DigitalOcean {
    * @param {*} callback - Function to execute on completion
    */
   floatingIpsRequestAction(ip_address, action, callback) {
-
+    let options = {
+      actionPath: 'floating_ips/' + ip_address + '/actions',
+      method: 'POST',
+      body: action
+    };
+    this.requestHelper.request(options, callback);
   }
 
   /**
@@ -783,10 +809,20 @@ export default class DigitalOcean {
    * Info: {@link https://developers.digitalocean.com/documentation/v2/#list-all-actions-for-a-floating-ip list-all-actions-for-a-floating-ip}
    *
    * @param {string} ip_address - Floating IP address
+   * @param {*} query - Query options
    * @param {*} callback - Function to execute on completion
    */
-  floatingIpsGetActions(ip_address, callback) {
-
+  floatingIpsGetActions(ip_address, query, callback) {
+    let options = {
+      actionPath: 'floating_ips/' + ip_address + '/actions',
+      key: 'actions',
+      qs: {
+        per_page: query.per_page || this.per_page,
+        page: query.page || 1
+      },
+      includeAll: query.includeAll || false
+    };
+    this.requestHelper.request(options, callback);
   }
 
   /**
@@ -798,6 +834,9 @@ export default class DigitalOcean {
    * @param {*} callback - Function to execute on completion
    */
   floatingIpsGetAction(ip_address, actionId, callback) {
-
+    let options = {
+      actionPath: 'floating_ips/' + ip_address + '/actions/' + actionId
+    };
+    this.requestHelper.request(options, callback);
   }
 }
