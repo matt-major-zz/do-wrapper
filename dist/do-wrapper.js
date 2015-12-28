@@ -470,7 +470,7 @@ var DigitalOcean = (function () {
       var options = {
         actionPath: 'domains',
         method: 'POST',
-        body: { name: name, ip_address: ip }
+        body: { name: name, ipAddress: ip }
       };
       this.requestHelper.request(options, callback);
     }
@@ -826,17 +826,17 @@ var DigitalOcean = (function () {
      * Create and assign a Floating IP to a specific droplet.
      * Info: {@link https://developers.digitalocean.com/documentation/v2/#create-a-new-floating-ip-assigned-to-a-droplet create-a-new-floating-ip-assigned-to-a-droplet}
      *
-     * @param {number} droplet_id - The ID of Droplet that the Floating IP will be assigned to.
+     * @param {number} dropletId - The ID of Droplet that the Floating IP will be assigned to.
      * @param {*} callback - Function to execute on completion
      */
   }, {
     key: 'floatingIpsAssignDroplet',
-    value: function floatingIpsAssignDroplet(droplet_id, callback) {
+    value: function floatingIpsAssignDroplet(dropletId, callback) {
       var options = {
         actionPath: 'floating_ips',
         method: 'POST',
         body: {
-          droplet_id: droplet_id
+          droplet_id: dropletId
         }
       };
       this.requestHelper.request(options, callback);
@@ -866,14 +866,14 @@ var DigitalOcean = (function () {
      * Retrieve an existing Floating IP
      * Info: {@link https://developers.digitalocean.com/documentation/v2/#retrieve-an-existing-floating-ip retrieve-an-existing-floating-ip}
      *
-     * @param {string} ip_address - Floating IP address.
+     * @param {string} ipAddress - Floating IP address.
      * @param {*} callback - Function to execute on completion
      */
   }, {
     key: 'floatingIpsGet',
-    value: function floatingIpsGet(ip_address, callback) {
+    value: function floatingIpsGet(ipAddress, callback) {
       var options = {
-        actionPath: 'floating_ips/' + ip_address
+        actionPath: 'floating_ips/' + ipAddress
       };
       this.requestHelper.request(options, callback);
     }
@@ -882,14 +882,14 @@ var DigitalOcean = (function () {
      * Delete a Floating IP
      * Info: {@link https://developers.digitalocean.com/documentation/v2/#delete-a-floating-ips delete-a-floating-ips}
      *
-     * @param {string} ip_address - Floating IP address
+     * @param {string} ipAddress - Floating IP address
      * @param {*} callback - Function to execute on completion
      */
   }, {
     key: 'floatingIpsDelete',
-    value: function floatingIpsDelete(ip_address, callback) {
+    value: function floatingIpsDelete(ipAddress, callback) {
       var options = {
-        actionPath: 'floating_ips/' + ip_address,
+        actionPath: 'floating_ips/' + ipAddress,
         method: 'DELETE'
       };
       this.requestHelper.request(options, callback);
@@ -899,15 +899,15 @@ var DigitalOcean = (function () {
      * Request an action on a Floating IP
      * Info: {@link https://developers.digitalocean.com/documentation/v2/#floating-ip-actions floating-ip-actions}
      *
-     * @param {string} ip_address - Floating IP address
+     * @param {string} ipAddress - Floating IP address
      * @param {*} action - Action options
      * @param {*} callback - Function to execute on completion
      */
   }, {
     key: 'floatingIpsRequestAction',
-    value: function floatingIpsRequestAction(ip_address, action, callback) {
+    value: function floatingIpsRequestAction(ipAddress, action, callback) {
       var options = {
-        actionPath: 'floating_ips/' + ip_address + '/actions',
+        actionPath: 'floating_ips/' + ipAddress + '/actions',
         method: 'POST',
         body: action
       };
@@ -918,15 +918,15 @@ var DigitalOcean = (function () {
      * List all actions for a Floating IP
      * Info: {@link https://developers.digitalocean.com/documentation/v2/#list-all-actions-for-a-floating-ip list-all-actions-for-a-floating-ip}
      *
-     * @param {string} ip_address - Floating IP address
+     * @param {string} ipAddress - Floating IP address
      * @param {*} query - Query options
      * @param {*} callback - Function to execute on completion
      */
   }, {
     key: 'floatingIpsGetActions',
-    value: function floatingIpsGetActions(ip_address, query, callback) {
+    value: function floatingIpsGetActions(ipAddress, query, callback) {
       var options = {
-        actionPath: 'floating_ips/' + ip_address + '/actions',
+        actionPath: 'floating_ips/' + ipAddress + '/actions',
         key: 'actions',
         qs: {
           per_page: query.per_page || this.per_page,
@@ -941,15 +941,15 @@ var DigitalOcean = (function () {
      * Retrieve an existing Floating IP action
      * Info: {@link https://developers.digitalocean.com/documentation/v2/#retrieve-an-existing-floating-ip-action retrieve-an-existing-floating-ip-action}
      *
-     * @param {string} ip_address - Floating IP address
+     * @param {string} ipAddress - Floating IP address
      * @param {number} actionId - The Id of the action
      * @param {*} callback - Function to execute on completion
      */
   }, {
     key: 'floatingIpsGetAction',
-    value: function floatingIpsGetAction(ip_address, actionId, callback) {
+    value: function floatingIpsGetAction(ipAddress, actionId, callback) {
       var options = {
-        actionPath: 'floating_ips/' + ip_address + '/actions/' + actionId
+        actionPath: 'floating_ips/' + ipAddress + '/actions/' + actionId
       };
       this.requestHelper.request(options, callback);
     }
