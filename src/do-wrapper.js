@@ -406,7 +406,7 @@ export default class DigitalOcean {
     let options = {
       actionPath: 'domains',
       method: 'POST',
-      body: {name: name, ip_address: ip}
+      body: {name: name, ipAddress: ip}
     };
     this.requestHelper.request(options, callback);
   }
@@ -698,6 +698,144 @@ export default class DigitalOcean {
   imagesGetAction(imageId, actionId, callback) {
     let options = {
       actionPath: 'images/' + imageId + '/actions/' + actionId
+    };
+    this.requestHelper.request(options, callback);
+  }
+
+  /**
+   * Get all Floating IPs
+   * Info: {@link https://developers.digitalocean.com/documentation/v2/#list-all-floating-ips list-all-floating-ips}
+   *
+   * @param {*} query - Query Options
+   * @param {*} callback - Function to execute on completion
+   */
+  floatingIpsGetAll(query, callback) {
+    let options = {
+      actionPath: 'floating_ips',
+      key: 'floating_ips',
+      qs: {
+        per_page: query.per_page || this.per_page,
+        page: query.page || 1
+      },
+      includeAll: query.includeAll || false
+    };
+    this.requestHelper.request(options, callback);
+  }
+
+  /**
+   * Create and assign a Floating IP to a specific droplet.
+   * Info: {@link https://developers.digitalocean.com/documentation/v2/#create-a-new-floating-ip-assigned-to-a-droplet create-a-new-floating-ip-assigned-to-a-droplet}
+   *
+   * @param {number} dropletId - The ID of Droplet that the Floating IP will be assigned to.
+   * @param {*} callback - Function to execute on completion
+   */
+  floatingIpsAssignDroplet(dropletId, callback) {
+    let options = {
+      actionPath: 'floating_ips',
+      method: 'POST',
+      body: {
+        droplet_id: dropletId
+      }
+    };
+    this.requestHelper.request(options, callback);
+  }
+
+  /**
+   * Create and assign a Floating IP to a region.
+   * Info: {@link https://developers.digitalocean.com/documentation/v2/#create-a-new-floating-ip-assigned-to-a-droplet create-a-new-floating-ip-assigned-to-a-droplet}
+   *
+   * @param {string} region - The slug identifier for the region the Floating IP will be reserved to.
+   * @param {*} callback - Function to execute on completion
+   */
+  floatingIpsAssignRegion(region, callback) {
+    let options = {
+      actionPath: 'floating_ips',
+      method: 'POST',
+      body: {
+        region: region
+      }
+    };
+    this.requestHelper.request(options, callback);
+  }
+
+  /**
+   * Retrieve an existing Floating IP
+   * Info: {@link https://developers.digitalocean.com/documentation/v2/#retrieve-an-existing-floating-ip retrieve-an-existing-floating-ip}
+   *
+   * @param {string} ipAddress - Floating IP address.
+   * @param {*} callback - Function to execute on completion
+   */
+  floatingIpsGet(ipAddress, callback) {
+    let options = {
+      actionPath: 'floating_ips/' + ipAddress
+    };
+    this.requestHelper.request(options, callback);
+  }
+
+  /**
+   * Delete a Floating IP
+   * Info: {@link https://developers.digitalocean.com/documentation/v2/#delete-a-floating-ips delete-a-floating-ips}
+   *
+   * @param {string} ipAddress - Floating IP address
+   * @param {*} callback - Function to execute on completion
+   */
+  floatingIpsDelete(ipAddress, callback) {
+    let options = {
+      actionPath: 'floating_ips/' + ipAddress,
+      method: 'DELETE'
+    };
+    this.requestHelper.request(options, callback);
+  }
+
+  /**
+   * Request an action on a Floating IP
+   * Info: {@link https://developers.digitalocean.com/documentation/v2/#floating-ip-actions floating-ip-actions}
+   *
+   * @param {string} ipAddress - Floating IP address
+   * @param {*} action - Action options
+   * @param {*} callback - Function to execute on completion
+   */
+  floatingIpsRequestAction(ipAddress, action, callback) {
+    let options = {
+      actionPath: 'floating_ips/' + ipAddress + '/actions',
+      method: 'POST',
+      body: action
+    };
+    this.requestHelper.request(options, callback);
+  }
+
+  /**
+   * List all actions for a Floating IP
+   * Info: {@link https://developers.digitalocean.com/documentation/v2/#list-all-actions-for-a-floating-ip list-all-actions-for-a-floating-ip}
+   *
+   * @param {string} ipAddress - Floating IP address
+   * @param {*} query - Query options
+   * @param {*} callback - Function to execute on completion
+   */
+  floatingIpsGetActions(ipAddress, query, callback) {
+    let options = {
+      actionPath: 'floating_ips/' + ipAddress + '/actions',
+      key: 'actions',
+      qs: {
+        per_page: query.per_page || this.per_page,
+        page: query.page || 1
+      },
+      includeAll: query.includeAll || false
+    };
+    this.requestHelper.request(options, callback);
+  }
+
+  /**
+   * Retrieve an existing Floating IP action
+   * Info: {@link https://developers.digitalocean.com/documentation/v2/#retrieve-an-existing-floating-ip-action retrieve-an-existing-floating-ip-action}
+   *
+   * @param {string} ipAddress - Floating IP address
+   * @param {number} actionId - The Id of the action
+   * @param {*} callback - Function to execute on completion
+   */
+  floatingIpsGetAction(ipAddress, actionId, callback) {
+    let options = {
+      actionPath: 'floating_ips/' + ipAddress + '/actions/' + actionId
     };
     this.requestHelper.request(options, callback);
   }

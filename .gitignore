@@ -4,3 +4,4 @@ node_modules
 *.iml
 doc/
 out/
+.DS_Store
