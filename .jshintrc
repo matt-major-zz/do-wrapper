@@ -14,7 +14,7 @@
   "es5": false,
   "esnext": true,
   "evil": false,
-  "expr": false,
+  "expr": true,
   "forin": true,
   "funcscope": false,
   "globals": {},
