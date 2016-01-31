@@ -11,6 +11,7 @@
   "main": "./dist/do-wrapper.js",
   "scripts": {
     "build": "gulp compile && npm run doc",
+    "precommit": "npm t",
     "test": "jshint src/*.js",
     "doc": "./node_modules/.bin/jsdoc src/*.js -d doc/"
   },
@@ -35,6 +36,7 @@
     "gulp": "3.9.0",
     "gulp-babel": "5.2.1",
     "gulp-uglify": "1.5.1",
+    "husky": "0.10.2",
     "jsdoc": "3.4.0",
     "jshint": "2.8.0"
   }
