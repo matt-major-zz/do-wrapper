@@ -22,11 +22,7 @@ export default class RequestHelper {
    * @param {*} callback - Function to execute on completion
    */
   request(options, callback) {
-    if ( options.includeAll ) {
-      this.getAllPages(options.key, options, callback);
-    } else {
-      this.submitRequest(options, callback);
-    }
+    options.includeAll ? this.getAllPages(options.key, options, callback) : this.submitRequest(options, callback);
   }
 
   /**
@@ -35,8 +31,8 @@ export default class RequestHelper {
    * @param {*} callback - Function to execute on completion
    */
   submitRequest(options, callback) {
-    var requestOptions = this.requestBuilder(options);
-    request(requestOptions, function (err, response, body) {
+    let requestOptions = this.requestBuilder(options);
+    request(requestOptions, (err, response, body) => {
       if ( err ) {
         callback(err);
       } else {
@@ -52,14 +48,14 @@ export default class RequestHelper {
    * @param {*} callback - Function to execute on completion
    */
   getAllPages(key, options, callback) {
-    var items = [],
-      total = 0,
-      required = 0,
-      completed = 1;
+    let items = [],
+        total = 0,
+        required = 0,
+        completed = 1;
 
     options.qs.page = 1;
 
-    this.submitRequest(options, function (err, response, body) {
+    this.submitRequest(options, (err, response, body) => {
       if ( err ) {
         callback(err);
       }
@@ -80,7 +76,7 @@ export default class RequestHelper {
           }
         });
       }
-    }.bind(this));
+    });
   }
 
   /**
@@ -91,7 +87,7 @@ export default class RequestHelper {
    * @param {*} callback - Function to execute on completion
    */
   getRemainingPages(options, first, last, callback) {
-    for ( var current = first; current <= last; current++ ) {
+    for ( let current = first; current <= last; current++ ) {
       options.qs.page = current;
       this.submitRequest(options, callback);
     }
