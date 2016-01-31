@@ -25,7 +25,7 @@ var DigitalOcean = (function () {
   function DigitalOcean(token, size) {
     _classCallCheck(this, DigitalOcean);
 
-    this.perPage = size;
+    this.per_page = size;
     this.requestHelper = new _requestHelper2['default'](token);
   }
 
@@ -54,7 +54,7 @@ var DigitalOcean = (function () {
         actionPath: 'actions',
         key: 'actions',
         qs: {
-          perPage: query.perPage || this.perPage,
+          per_page: query.per_page || this.per_page,
           page: query.page || 1
         },
         includeAll: query.includeAll || false
@@ -92,7 +92,7 @@ var DigitalOcean = (function () {
         actionPath: 'account/keys',
         key: 'ssh_keys',
         qs: {
-          perPage: query.perPage || this.perPage,
+          per_page: query.per_page || this.per_page,
           page: query.page || 1
         },
         includeAll: query.includeAll || false
@@ -202,7 +202,7 @@ var DigitalOcean = (function () {
         actionPath: 'droplets',
         key: 'droplets',
         qs: {
-          perPage: query.perPage || this.perPage,
+          per_page: query.per_page || this.per_page,
           page: query.page || 1
         },
         includeAll: query.includeAll || false
@@ -225,7 +225,7 @@ var DigitalOcean = (function () {
         actionPath: 'droplets/' + dropletId + '/kernels',
         key: 'kernels',
         qs: {
-          perPage: query.perPage || this.perPage,
+          per_page: query.per_page || this.per_page,
           page: query.page || 1
         },
         includeAll: query.includeAll || false
@@ -248,7 +248,7 @@ var DigitalOcean = (function () {
         actionPath: 'droplets/' + dropletId + '/snapshots',
         key: 'snapshots',
         qs: {
-          perPage: query.perPage || this.perPage,
+          per_page: query.per_page || this.per_page,
           page: query.page || 1
         },
         includeAll: query.includeAll || false
@@ -271,7 +271,7 @@ var DigitalOcean = (function () {
         actionPath: 'droplets/' + dropletId + '/backups',
         key: 'backups',
         qs: {
-          perPage: query.perPage || this.perPage,
+          per_page: query.per_page || this.per_page,
           page: query.page || 1
         },
         includeAll: query.includeAll || false
@@ -294,7 +294,7 @@ var DigitalOcean = (function () {
         actionPath: 'droplets/' + dropletId + '/actions',
         key: 'actions',
         qs: {
-          perPage: query.perPage || this.perPage,
+          per_page: query.per_page || this.per_page,
           page: query.page || 1
         },
         includeAll: query.includeAll || false
@@ -449,7 +449,7 @@ var DigitalOcean = (function () {
         actionPath: 'domains',
         key: 'domains',
         qs: {
-          perPage: query.perPage || this.perPage,
+          per_page: query.per_page || this.per_page,
           page: query.page || 1
         }
       };
@@ -523,7 +523,7 @@ var DigitalOcean = (function () {
         actionPath: 'domains/' + name + '/records',
         key: 'domain_records',
         qs: {
-          perPage: query.perPage || this.perPage,
+          per_page: query.per_page || this.per_page,
           page: query.page || 1
         }
       };
@@ -618,7 +618,7 @@ var DigitalOcean = (function () {
         actionPath: 'regions',
         key: 'regions',
         qs: {
-          perPage: query.perPage || this.perPage,
+          per_page: query.per_page || this.per_page,
           page: query.page || 1
         },
         includeAll: query.includeAll || false
@@ -640,7 +640,7 @@ var DigitalOcean = (function () {
         actionPath: 'sizes',
         key: 'sizes',
         qs: {
-          perPage: query.perPage || this.perPage,
+          per_page: query.per_page || this.per_page,
           page: query.page || 1
         },
         includeAll: query.includeAll || false
@@ -663,7 +663,7 @@ var DigitalOcean = (function () {
         actionPath: 'images',
         key: 'images',
         qs: {
-          perPage: query.perPage || this.perPage,
+          per_page: query.per_page || this.per_page,
           page: query.page || 1,
           'private': query['private'] || false,
           type: query.type || null
@@ -720,7 +720,7 @@ var DigitalOcean = (function () {
         actionPath: 'images/' + imageId + '/actions',
         key: 'actions',
         qs: {
-          perPage: query.perPage || this.perPage,
+          per_page: query.per_page || this.per_page,
           page: query.page || 1
         },
         includeAll: query.includeAll || false
@@ -814,7 +814,7 @@ var DigitalOcean = (function () {
         actionPath: 'floating_ips',
         key: 'floating_ips',
         qs: {
-          perPage: query.perPage || this.perPage,
+          per_page: query.per_page || this.per_page,
           page: query.page || 1
         },
         includeAll: query.includeAll || false
@@ -929,7 +929,7 @@ var DigitalOcean = (function () {
         actionPath: 'floating_ips/' + ipAddress + '/actions',
         key: 'actions',
         qs: {
-          perPage: query.perPage || this.perPage,
+          per_page: query.per_page || this.per_page,
           page: query.page || 1
         },
         includeAll: query.includeAll || false
