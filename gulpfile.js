@@ -3,6 +3,8 @@ var gulp = require('gulp'),
     SOURCE_DIRECTORY = 'src/**/*.js',
     DEST_DIRECTORY = 'dist/';
 
+gulp.task('default', ['compile']);
+
 gulp.task('compile', function () {
   return gulp.src(SOURCE_DIRECTORY)
           .pipe(babel({experimental: true}))
