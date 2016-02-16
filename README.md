@@ -24,6 +24,10 @@ $ npm run doc
 
 You can then open `doc/index.html` to view the API documentation.
 
+Alternatively, you can view the generated markdown docs here:
+* [do-wrapper](docs/do-wrapper.md)
+* [Request Helper](request-helper.md)
+
 ### Usage
 
 In order to use ```do-wrapper``` you will need to generate an API key on the DigitalOcean website. Once you have this, add the library to your project with the following command:
