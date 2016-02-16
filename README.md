@@ -69,7 +69,7 @@ Please raise an issue on GitHub with as much information as possible and the ste
 ### License
 The MIT License (MIT)
 
-Copyright (c) 2015 Matt Major
+Copyright (c) 2016 Matt Major
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
