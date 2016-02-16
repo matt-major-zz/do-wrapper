@@ -15,6 +15,15 @@ To install ```do-wrapper``` and add it to your ```package.json``` file, use the 
 $ npm install --save do-wrapper
 ```
 
+### Documentation
+All methods are documented. You can generate the API docs using the following command.
+
+```sh
+$ npm run doc
+```
+
+You can then open `doc/index.html` to view the API documentation.
+
 ### Usage
 
 In order to use ```do-wrapper``` you will need to generate an API key on the DigitalOcean website. Once you have this, add the library to your project with the following command:
