@@ -25,8 +25,8 @@ $ npm run doc
 You can then open `doc/index.html` to view the API documentation.
 
 Alternatively, you can view the generated markdown docs here:
-* [do-wrapper](docs/do-wrapper.md)
-* [Request Helper](request-helper.md)
+* [Digital Ocean](docs/do-wrapper.md)
+* [Request Helper](docs/request-helper.md)
 
 ### Usage
 
