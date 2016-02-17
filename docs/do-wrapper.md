@@ -33,7 +33,7 @@ Get Account Actions
 
 **Parameters**
 
-**query**: `*`, Query Options
+**query**: `Object`, Query Options
 
 **callback**: `*`, Function to execute on completion
 
@@ -57,7 +57,7 @@ Info: [https://developers.digitalocean.com/documentation/v2/#list-all-keys list-
 
 **Parameters**
 
-**query**: `*`, Query Options
+**query**: `Object`, Query Options
 
 **callback**: `*`, Function to execute on completion
 
@@ -131,7 +131,7 @@ Info: [https://developers.digitalocean.com/documentation/v2/#list-all-droplets l
 
 **Parameters**
 
-**query**: `*`, Query Options
+**query**: `Object`, Query Options
 
 **callback**: `*`, Function to execute on completion
 
@@ -145,7 +145,7 @@ Info: [https://developers.digitalocean.com/documentation/v2/#list-all-available-
 
 **dropletId**: `number`, The Id of the Droplet
 
-**query**: `*`, Query Options
+**query**: `Object`, Query Options
 
 **callback**: `*`, Function to execute on completion
 
@@ -159,7 +159,7 @@ Info: [https://developers.digitalocean.com/documentation/v2/#list-snapshots-for-
 
 **dropletId**: `number`, The Id of the Droplet
 
-**query**: `*`, Query Options
+**query**: `Object`, Query Options
 
 **callback**: `*`, Function to execute on completion
 
@@ -173,7 +173,7 @@ Info: [https://developers.digitalocean.com/documentation/v2/#list-backups-for-a-
 
 **dropletId**: `number`, The Id of the Droplet
 
-**query**: `*`, Query Options
+**query**: `Object`, Query Options
 
 **callback**: `*`, Function to execute on completion
 
@@ -187,7 +187,7 @@ Info: [https://developers.digitalocean.com/documentation/v2/#list-actions-for-a-
 
 **dropletId**: `number`, The Id of the Droplet
 
-**query**: `*`, Query Options
+**query**: `Object`, Query Options
 
 **callback**: `*`, Function to execute on completion
 
@@ -295,7 +295,7 @@ Info: [https://developers.digitalocean.com/documentation/v2/#list-all-domains li
 
 **Parameters**
 
-**query**: `*`, Query Options
+**query**: `Object`, Query Options
 
 **callback**: `*`, Function to execute on completion
 
@@ -347,7 +347,7 @@ Info: [https://developers.digitalocean.com/documentation/v2/#list-all-domain-rec
 
 **name**: `string`, The Domain Name
 
-**query**: `*`, Query Options
+**query**: `Object`, Query Options
 
 **callback**: `*`, Function to execute on completion
 
@@ -417,7 +417,7 @@ Info: [https://developers.digitalocean.com/documentation/v2/#list-all-regions li
 
 **Parameters**
 
-**query**: `*`, Query Options
+**query**: `Object`, Query Options
 
 **callback**: `*`, Function to execute on completion
 
@@ -429,7 +429,7 @@ Info: [https://developers.digitalocean.com/documentation/v2/#list-all-sizes list
 
 **Parameters**
 
-**query**: `*`, Query Options
+**query**: `Object`, Query Options
 
 **callback**: `*`, Function to execute on completion
 
@@ -442,7 +442,7 @@ Info: [https://developers.digitalocean.com/documentation/v2/#list-all-images lis
 
 **Parameters**
 
-**query**: `*`, Query Options
+**query**: `Object`, Query Options
 
 **callback**: `*`, Function to execute on completion
 
@@ -480,7 +480,7 @@ Info: [https://developers.digitalocean.com/documentation/v2/#list-all-actions-fo
 
 **imageId**: `number`, The Id of the Image
 
-**query**: `*`, Query Options
+**query**: `Object`, Query Options
 
 **callback**: `*`, Function to execute on completion
 
@@ -546,7 +546,7 @@ Info: [https://developers.digitalocean.com/documentation/v2/#list-all-floating-i
 
 **Parameters**
 
-**query**: `*`, Query Options
+**query**: `Object`, Query Options
 
 **callback**: `*`, Function to execute on completion
 
@@ -622,7 +622,7 @@ Info: [https://developers.digitalocean.com/documentation/v2/#list-all-actions-fo
 
 **ipAddress**: `string`, Floating IP address
 
-**query**: `*`, Query options
+**query**: `Object`, Query Options
 
 **callback**: `*`, Function to execute on completion
 

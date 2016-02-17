@@ -26,7 +26,7 @@ export default class DigitalOcean {
 
   /**
    * Get Account Actions
-   * @param {*} query - Query Options
+   * @param {{per_page: number, page: number, includeAll: boolean}} query - Query Options
    * @param {*} callback - Function to execute on completion
    */
   accountGetActions(query, callback) {
@@ -60,7 +60,7 @@ export default class DigitalOcean {
    * List all SSH Keys
    * Info: {@link https://developers.digitalocean.com/documentation/v2/#list-all-keys list-all-keys}
    *
-   * @param {*} query - Query Options
+   * @param {{per_page: number, page: number, includeAll: boolean}} query - Query Options
    * @param {*} callback - Function to execute on completion
    */
   accountGetKeys(query, callback) {
@@ -158,7 +158,7 @@ export default class DigitalOcean {
    * Get a list of Droplets
    * Info: {@link https://developers.digitalocean.com/documentation/v2/#list-all-droplets list-all-droplets}
    *
-   * @param {*} query - Query Options
+   * @param {{per_page: number, page: number, includeAll: boolean}} query - Query Options
    * @param {*} callback - Function to execute on completion
    */
   dropletsGetAll(query, callback) {
@@ -179,7 +179,7 @@ export default class DigitalOcean {
    * Info: {@link https://developers.digitalocean.com/documentation/v2/#list-all-available-kernels-for-a-droplet list-all-available-kernels-for-a-droplet}
    *
    * @param {number} dropletId - The Id of the Droplet
-   * @param {*} query - Query Options
+   * @param {{per_page: number, page: number, includeAll: boolean}} query - Query Options
    * @param {*} callback - Function to execute on completion
    */
   dropletsGetKernels(dropletId, query, callback) {
@@ -200,7 +200,7 @@ export default class DigitalOcean {
    * Info: {@link https://developers.digitalocean.com/documentation/v2/#list-snapshots-for-a-droplet retrieve-snapshots-for-a-droplet}
    *
    * @param {number} dropletId - The Id of the Droplet
-   * @param {*} query - Query Options
+   * @param {{per_page: number, page: number, includeAll: boolean}} query - Query Options
    * @param {*} callback - Function to execute on completion
    */
   dropletsGetSnapshots(dropletId, query, callback) {
@@ -221,7 +221,7 @@ export default class DigitalOcean {
    * Info: {@link https://developers.digitalocean.com/documentation/v2/#list-backups-for-a-droplet list-backups-for-a-droplet}
    *
    * @param {number} dropletId - The Id of the Droplet
-   * @param {*} query - Query Options
+   * @param {{per_page: number, page: number, includeAll: boolean}} query - Query Options
    * @param {*} callback - Function to execute on completion
    */
   dropletsGetBackups(dropletId, query, callback) {
@@ -242,7 +242,7 @@ export default class DigitalOcean {
    * Info: {@link https://developers.digitalocean.com/documentation/v2/#list-actions-for-a-droplet list-actions-for-a-droplet}
    *
    * @param {number} dropletId - The Id of the Droplet
-   * @param {*} query - Query Options
+   * @param {{per_page: number, page: number, includeAll: boolean}} query - Query Options
    * @param {*} callback - Function to execute on completion
    */
   dropletsGetActions(dropletId, query, callback) {
@@ -379,7 +379,7 @@ export default class DigitalOcean {
    * Get all Domains
    * Info: {@link https://developers.digitalocean.com/documentation/v2/#list-all-domains list-all-domains}
    *
-   * @param {*} query - Query Options
+   * @param {{per_page: number, page: number, includeAll: boolean}} query - Query Options
    * @param {*} callback - Function to execute on completion
    */
   domainsGetAll(query, callback) {
@@ -445,7 +445,7 @@ export default class DigitalOcean {
    * Info: {@link https://developers.digitalocean.com/documentation/v2/#list-all-domain-records list-all-domain-records}
    *
    * @param {string} name - The Domain Name
-   * @param {*} query - Query Options
+   * @param {{per_page: number, page: number, includeAll: boolean}} query - Query Options
    * @param {*} callback - Function to execute on completion
    */
   domainRecordsGetAll(name, query, callback) {
@@ -530,7 +530,7 @@ export default class DigitalOcean {
    * Get all Regions
    * Info: {@link https://developers.digitalocean.com/documentation/v2/#list-all-regions list-all-regions}
    *
-   * @param {*} query - Query Options
+   * @param {{per_page: number, page: number, includeAll: boolean}} query - Query Options
    * @param {*} callback - Function to execute on completion
    */
   regionsGetAll(query, callback) {
@@ -550,7 +550,7 @@ export default class DigitalOcean {
    * Get all Droplet sizes
    * Info: {@link https://developers.digitalocean.com/documentation/v2/#list-all-sizes list-all-sizes}
    *
-   * @param {*} query - Query Options
+   * @param {{per_page: number, page: number, includeAll: boolean}} query - Query Options
    * @param {*} callback - Function to execute on completion
    */
   sizesGetAll(query, callback) {
@@ -571,7 +571,7 @@ export default class DigitalOcean {
    * Include type=[distribution,application] or private=true in the query object to limit results.
    * Info: {@link https://developers.digitalocean.com/documentation/v2/#list-all-images list-all-images}
    *
-   * @param {*} query - Query Options
+   * @param {{per_page: number, page: number, includeAll: boolean, private: boolean}} query - Query Options
    * @param {*} callback - Function to execute on completion
    */
   imagesGetAll(query, callback) {
@@ -622,7 +622,7 @@ export default class DigitalOcean {
    * Info: {@link https://developers.digitalocean.com/documentation/v2/#list-all-actions-for-an-image list-all-actions-for-an-image}
    *
    * @param {number} imageId - The Id of the Image
-   * @param {*} query - Query Options
+   * @param {{per_page: number, page: number, includeAll: boolean}} query - Query Options
    * @param {*} callback - Function to execute on completion
    */
   imagesGetActions(imageId, query, callback) {
@@ -706,7 +706,7 @@ export default class DigitalOcean {
    * Get all Floating IPs
    * Info: {@link https://developers.digitalocean.com/documentation/v2/#list-all-floating-ips list-all-floating-ips}
    *
-   * @param {*} query - Query Options
+   * @param {{per_page: number, page: number, includeAll: boolean}} query - Query Options
    * @param {*} callback - Function to execute on completion
    */
   floatingIpsGetAll(query, callback) {
@@ -809,7 +809,7 @@ export default class DigitalOcean {
    * Info: {@link https://developers.digitalocean.com/documentation/v2/#list-all-actions-for-a-floating-ip list-all-actions-for-a-floating-ip}
    *
    * @param {string} ipAddress - Floating IP address
-   * @param {*} query - Query options
+   * @param {{per_page: number, page: number, includeAll: boolean}} query - Query Options
    * @param {*} callback - Function to execute on completion
    */
   floatingIpsGetActions(ipAddress, query, callback) {
