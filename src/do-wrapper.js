@@ -406,7 +406,7 @@ export default class DigitalOcean {
     let options = {
       actionPath: 'domains',
       method: 'POST',
-      body: {name: name, ipAddress: ip}
+      body: {name: name, ip_address: ip}
     };
     this.requestHelper.request(options, callback);
   }
