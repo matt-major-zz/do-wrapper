@@ -51,7 +51,7 @@ export default class DigitalOcean {
    */
   accountGetAction(actionId, callback) {
     let options = {
-      actionPath: 'actions/' + actionId
+      actionPath: 'actions/' + encodeURIComponent(actionId)
     };
     this.requestHelper.request(options, callback);
   }
@@ -101,7 +101,7 @@ export default class DigitalOcean {
    */
   accountGetKeyById(keyId, callback) {
     let options = {
-      actionPath: 'account/keys/' + keyId
+      actionPath: 'account/keys/' + encodeURIComponent(keyId)
     };
     this.requestHelper.request(options, callback);
   }
@@ -115,7 +115,7 @@ export default class DigitalOcean {
    */
   accountGetKeyByFingerprint(fingerprint, callback) {
     let options = {
-      actionPath: 'account/keys/' + fingerprint
+      actionPath: 'account/keys/' + encodeURIComponent(fingerprint)
     };
     this.requestHelper.request(options, callback);
   }
@@ -130,7 +130,7 @@ export default class DigitalOcean {
    */
   accountRenameKey(keyIdentity, keyName, callback) {
     let options = {
-      actionPath: 'account/keys/' + keyIdentity,
+      actionPath: 'account/keys/' + encodeURIComponent(keyIdentity),
       method: 'PUT',
       body: {
         name: keyName
@@ -148,7 +148,7 @@ export default class DigitalOcean {
    */
   accountDeleteKey(keyIdentity, callback) {
     let options = {
-      actionPath: 'account/keys/' + keyIdentity,
+      actionPath: 'account/keys/' + encodeURIComponent(keyIdentity),
       method: 'DELETE'
     };
     this.requestHelper.request(options, callback);
@@ -184,7 +184,7 @@ export default class DigitalOcean {
    */
   dropletsGetKernels(dropletId, query, callback) {
     let options = {
-      actionPath: 'droplets/' + dropletId + '/kernels',
+      actionPath: 'droplets/' + encodeURIComponent(dropletId) + '/kernels',
       key: 'kernels',
       qs: {
         per_page: query.per_page || this.per_page,
@@ -205,7 +205,7 @@ export default class DigitalOcean {
    */
   dropletsGetSnapshots(dropletId, query, callback) {
     let options = {
-      actionPath: 'droplets/' + dropletId + '/snapshots',
+      actionPath: 'droplets/' + encodeURIComponent(dropletId) + '/snapshots',
       key: 'snapshots',
       qs: {
         per_page: query.per_page || this.per_page,
@@ -226,7 +226,7 @@ export default class DigitalOcean {
    */
   dropletsGetBackups(dropletId, query, callback) {
     let options = {
-      actionPath: 'droplets/' + dropletId + '/backups',
+      actionPath: 'droplets/' + encodeURIComponent(dropletId) + '/backups',
       key: 'backups',
       qs: {
         per_page: query.per_page || this.per_page,
@@ -247,7 +247,7 @@ export default class DigitalOcean {
    */
   dropletsGetActions(dropletId, query, callback) {
     let options = {
-      actionPath: 'droplets/' + dropletId + '/actions',
+      actionPath: 'droplets/' + encodeURIComponent(dropletId) + '/actions',
       key: 'actions',
       qs: {
         per_page: query.per_page || this.per_page,
@@ -283,7 +283,7 @@ export default class DigitalOcean {
    */
   dropletsGetById(dropletId, callback) {
     let options = {
-      actionPath: 'droplets/' + dropletId
+      actionPath: 'droplets/' + encodeURIComponent(dropletId)
     };
     this.requestHelper.request(options, callback);
   }
@@ -297,7 +297,7 @@ export default class DigitalOcean {
    */
   dropletsDelete(dropletId, callback) {
     let options = {
-      actionPath: 'droplets/' + dropletId,
+      actionPath: 'droplets/' + encodeURIComponent(dropletId),
       method: 'DELETE'
     };
     this.requestHelper.request(options, callback);
@@ -312,7 +312,7 @@ export default class DigitalOcean {
    */
   dropletsGetNeighbors(dropletId, callback) {
     let options = {
-      actionPath: 'droplets/' + dropletId + '/neighbors'
+      actionPath: 'droplets/' + encodeURIComponent(dropletId) + '/neighbors'
     };
     this.requestHelper.request(options, callback);
   }
@@ -353,7 +353,7 @@ export default class DigitalOcean {
    */
   dropletsRequestAction(dropletId, action, callback) {
     let options = {
-      actionPath: 'droplets/' + dropletId + '/actions',
+      actionPath: 'droplets/' + encodeURIComponent(dropletId) + '/actions',
       method: 'POST',
       body: action
     };
@@ -370,7 +370,7 @@ export default class DigitalOcean {
    */
   dropletsGetAction(dropletId, actionId, callback) {
     let options = {
-      actionPath: 'droplets/' + dropletId + '/actions/' + actionId
+      actionPath: 'droplets/' + encodeURIComponent(dropletId) + '/actions/' + encodeURIComponent(actionId)
     };
     this.requestHelper.request(options, callback);
   }
@@ -420,7 +420,7 @@ export default class DigitalOcean {
    */
   domainsGet(name, callback) {
     let options = {
-      actionPath: 'domains/' + name
+      actionPath: 'domains/' + encodeURIComponent(name)
     };
     this.requestHelper.request(options, callback);
   }
@@ -434,7 +434,7 @@ export default class DigitalOcean {
    */
   domainsDelete(name, callback) {
     let options = {
-      actionPath: 'domains/' + name,
+      actionPath: 'domains/' + encodeURIComponent(name),
       method: 'DELETE'
     };
     this.requestHelper.request(options, callback);
@@ -450,7 +450,7 @@ export default class DigitalOcean {
    */
   domainRecordsGetAll(name, query, callback) {
     let options = {
-      actionPath: 'domains/' + name + '/records',
+      actionPath: 'domains/' + encodeURIComponent(name) + '/records',
       key: 'domain_records',
       qs: {
         per_page: query.per_page || this.per_page,
@@ -470,7 +470,7 @@ export default class DigitalOcean {
    */
   domainRecordsCreate(name, configuration, callback) {
     let options = {
-      actionPath: 'domains/' + name + '/records',
+      actionPath: 'domains/' + encodeURIComponent(name) + '/records',
       method: 'POST',
       body: configuration
     };
@@ -487,7 +487,7 @@ export default class DigitalOcean {
    */
   domainRecordsGet(name, domainRecordId, callback) {
     let options = {
-      actionPath: 'domains/' + name + '/records/' + domainRecordId
+      actionPath: 'domains/' + encodeURIComponent(name) + '/records/' + encodeURIComponent(domainRecordId)
     };
     this.requestHelper.request(options, callback);
   }
@@ -503,7 +503,7 @@ export default class DigitalOcean {
    */
   domainRecordsUpdate(name, domainRecordId, configuration, callback) {
     let options = {
-      actionPath: 'domains/' + name + '/records/' + domainRecordId,
+      actionPath: 'domains/' + encodeURIComponent(name) + '/records/' + encodeURIComponent(domainRecordId),
       method: 'PUT',
       body: configuration
     };
@@ -520,7 +520,7 @@ export default class DigitalOcean {
    */
   domainRecordsDelete(name, domainRecordId, callback) {
     let options = {
-      actionPath: 'domains/' + name + '/records/' + domainRecordId,
+      actionPath: 'domains/' + encodeURIComponent(name) + '/records/' + encodeURIComponent(domainRecordId),
       method: 'DELETE'
     };
     this.requestHelper.request(options, callback);
@@ -598,7 +598,7 @@ export default class DigitalOcean {
    */
   imagesGetById(imageId, callback) {
     let options = {
-      actionPath: 'images/' + imageId
+      actionPath: 'images/' + encodeURIComponent(imageId)
     };
     this.requestHelper.request(options, callback);
   }
@@ -612,7 +612,7 @@ export default class DigitalOcean {
    */
   imagesGetBySlug(slug, callback) {
     let options = {
-      actionPath: 'images/' + slug
+      actionPath: 'images/' + encodeURIComponent(slug)
     };
     this.requestHelper.request(options, callback);
   }
@@ -627,7 +627,7 @@ export default class DigitalOcean {
    */
   imagesGetActions(imageId, query, callback) {
     let options = {
-      actionPath: 'images/' + imageId + '/actions',
+      actionPath: 'images/' + encodeURIComponent(imageId) + '/actions',
       key: 'actions',
       qs: {
         per_page: query.per_page || this.per_page,
@@ -648,7 +648,7 @@ export default class DigitalOcean {
    */
   imagesUpdate(imageId, name, callback) {
     let options = {
-      actionPath: 'images/' + imageId,
+      actionPath: 'images/' + encodeURIComponent(imageId),
       body: {name: name},
       method: 'PUT'
     };
@@ -664,7 +664,7 @@ export default class DigitalOcean {
    */
   imagesDelete(imageId, callback) {
     let options = {
-      actionPath: 'images/' + imageId,
+      actionPath: 'images/' + encodeURIComponent(imageId),
       method: 'DELETE'
     };
     this.requestHelper.request(options, callback);
@@ -680,7 +680,7 @@ export default class DigitalOcean {
    */
   imagesRequestAction(imageId, action, callback) {
     let options = {
-      actionPath: 'images/' + imageId + '/actions',
+      actionPath: 'images/' + encodeURIComponent(imageId) + '/actions',
       method: 'POST',
       body: action
     };
@@ -697,7 +697,7 @@ export default class DigitalOcean {
    */
   imagesGetAction(imageId, actionId, callback) {
     let options = {
-      actionPath: 'images/' + imageId + '/actions/' + actionId
+      actionPath: 'images/' + encodeURIComponent(imageId) + '/actions/' + encodeURIComponent(actionId)
     };
     this.requestHelper.request(options, callback);
   }
@@ -767,7 +767,7 @@ export default class DigitalOcean {
    */
   floatingIpsGet(ipAddress, callback) {
     let options = {
-      actionPath: 'floating_ips/' + ipAddress
+      actionPath: 'floating_ips/' + encodeURIComponent(ipAddress)
     };
     this.requestHelper.request(options, callback);
   }
@@ -781,7 +781,7 @@ export default class DigitalOcean {
    */
   floatingIpsDelete(ipAddress, callback) {
     let options = {
-      actionPath: 'floating_ips/' + ipAddress,
+      actionPath: 'floating_ips/' + encodeURIComponent(ipAddress),
       method: 'DELETE'
     };
     this.requestHelper.request(options, callback);
@@ -797,7 +797,7 @@ export default class DigitalOcean {
    */
   floatingIpsRequestAction(ipAddress, action, callback) {
     let options = {
-      actionPath: 'floating_ips/' + ipAddress + '/actions',
+      actionPath: 'floating_ips/' + encodeURIComponent(ipAddress) + '/actions',
       method: 'POST',
       body: action
     };
@@ -814,7 +814,7 @@ export default class DigitalOcean {
    */
   floatingIpsGetActions(ipAddress, query, callback) {
     let options = {
-      actionPath: 'floating_ips/' + ipAddress + '/actions',
+      actionPath: 'floating_ips/' + encodeURIComponent(ipAddress) + '/actions',
       key: 'actions',
       qs: {
         per_page: query.per_page || this.per_page,
@@ -835,7 +835,7 @@ export default class DigitalOcean {
    */
   floatingIpsGetAction(ipAddress, actionId, callback) {
     let options = {
-      actionPath: 'floating_ips/' + ipAddress + '/actions/' + actionId
+      actionPath: 'floating_ips/' + encodeURIComponent(ipAddress) + '/actions/' + encodeURIComponent(actionId)
     };
     this.requestHelper.request(options, callback);
   }
