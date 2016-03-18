@@ -839,4 +839,165 @@ export default class DigitalOcean {
     };
     this.requestHelper.request(options, callback);
   }
+
+    /**
+   * Add a new Tag
+   * Info: {@link https://developers.digitalocean.com/documentation/v2/tagging-preview/#create-a-new-tag create-a-new-tag}
+   *
+   * @param {string} name - Tag Name
+   * @param {*} callback - Function to execute on completion
+   */
+  tagsCreate(name, callback) {
+    let options = {
+      actionPath: 'tags',
+      method: 'POST',
+      body: {name: name}
+    };
+    this.requestHelper.request(options, callback);
+  }
+
+    /**
+   * Delete a Tag
+   * Info: {@link https://developers.digitalocean.com/documentation/v2/tagging-preview/#delete-a-tag delete-a-tag}
+   *
+   * @param {string} name - Tag Name
+   * @param {*} callback - Function to execute on completion
+   */
+  tagsDelete(name, callback) {
+    let options = {
+      actionPath: 'tags/' + encodeURIComponent(name),
+      method: 'DELETE'
+    };
+    this.requestHelper.request(options, callback);
+  }
+
+  /**
+   * Get a Tag
+   * Info: {@link https://developers.digitalocean.com/documentation/v2/tagging-preview/#retrieve-a-tag retrieve-a-tag}
+   *
+   * @param {string} name - The Tag Name
+   * @param {*} callback - Function to execute on completion
+   */
+  tagsGet(name, callback) {
+    let options = {
+      actionPath: 'tags/' + encodeURIComponent(name)
+    };
+    this.requestHelper.request(options, callback);
+  }
+
+  /**
+   * Get all Tags
+   * Info: {@link https://developers.digitalocean.com/documentation/v2/tagging-preview/#list-all-tags list-all-tags}
+   *
+   * @param {{per_page: number, page: number, includeAll: boolean}} query - Query Options
+   * @param {*} callback - Function to execute on completion
+   */
+  tagsGetAll(query, callback) {
+    let options = {
+      actionPath: 'tags',
+      key: 'tags',
+      qs: {
+        per_page: query.per_page || this.per_page,
+        page: query.page || 1
+      },
+      includeAll: query.includeAll || false
+    };
+    this.requestHelper.request(options, callback);
+  }
+
+  /**
+   * Tag resources
+   * Info: {@link https://developers.digitalocean.com/documentation/v2/tagging-preview/#tag-a-resource tag-a-resource}
+   *
+   * @param {string} name - The Tag Name
+   * @param {*} configuration - Array of objects which identify the resources to tag
+   * @param {*} callback - Function to execute on completion
+   */
+  tagsAddResources(name, configuration, callback) {
+    let options = {
+      actionPath: 'tags/' + encodeURIComponent(name) + '/resources',
+      method: 'POST',
+      body: configuration
+    };
+    this.requestHelper.request(options, callback);
+  }
+
+  /**
+   * Untag a resource
+   * Info: {@link https://developers.digitalocean.com/documentation/v2/tagging-preview/#untag-a-resource untag-a-resource}
+   *
+   * @param {string} name - The Tag Name
+   * @param {*} configuration - Array of objects which identify the resources to untag
+   * @param {*} callback - Function to execute on completion
+   */
+  tagsDeleteResource(name, configuration, callback) {
+    let options = {
+      actionPath: 'tags/' + encodeURIComponent(name) + '/resources',
+      method: 'DELETE',
+      body: configuration
+    };
+    this.requestHelper.request(options, callback);
+  }
+
+    /**
+   * Get Droplets by Tag
+   *
+   * Info: {@link https://developers.digitalocean.com/documentation/v2/tagging-preview/#listing-droplets-by-tag listing-droplets-by-tag}
+   *
+   * @param {string} name - The Tag Name
+      * @param {{per_page: number, page: number, includeAll: boolean}} query - Query Options
+   * @param {*} callback - Function to execute on completion
+   */
+  tagsGetDroplets(name, query, callback) {
+    let options = {
+      actionPath: 'droplets',
+      key: 'droplets',
+      qs: {
+        per_page: query.per_page || this.per_page,
+        page: query.page || 1,
+        tag_name: name
+      },
+      includeAll: query.includeAll || false
+    };
+    this.requestHelper.request(options, callback);
+  }
+
+    /**
+   * Delete Droplets by Tag
+   *
+   * Info: {@link https://developers.digitalocean.com/documentation/v2/tagging-preview/#deleting-droplets-by-tag deleting-droplets-by-tag}
+   *
+   * @param {string} name - The Tag Name
+   * @param {*} callback - Function to execute on completion
+   */
+  tagsDeleteDroplets(name, callback) {
+    let options = {
+      actionPath: 'droplets',
+      method: 'DELETE',
+      qs: {
+        tag_name: name
+      }
+    };
+    this.requestHelper.request(options, callback);
+  }
+
+    /**
+   * Request an Action on a tag's Droplets
+   * Info: {@link https://developers.digitalocean.com/documentation/v2/tagging-preview/#acting-on-tagged-droplets acting-on-tagged-droplets}
+   *
+   * @param {string} name - The Tag Name
+   * @param {*} action - Action Object
+   * @param {*} callback - Function to execute on completion
+   */
+  tagsRequestAction(name, action, callback) {
+    let options = {
+      actionPath: 'droplets/actions',
+      method: 'POST',
+      qs: {
+        tag_name: name
+      },
+      body: action
+    };
+    this.requestHelper.request(options, callback);
+  }
 }
