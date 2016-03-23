@@ -455,7 +455,8 @@ export default class DigitalOcean {
       qs: {
         per_page: query.per_page || this.per_page,
         page: query.page || 1
-      }
+      },
+      includeAll: query.includeAll || false
     };
     this.requestHelper.request(options, callback);
   }
