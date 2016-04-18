@@ -34,6 +34,7 @@ export default class DigitalOcean {
       actionPath: 'actions',
       key: 'actions',
       qs: {
+        tag_name: query.tag_name || '',
         per_page: query.per_page || this.per_page,
         page: query.page || 1
       },
@@ -68,6 +69,7 @@ export default class DigitalOcean {
       actionPath: 'account/keys',
       key: 'ssh_keys',
       qs: {
+        tag_name: query.tag_name || '',
         per_page: query.per_page || this.per_page,
         page: query.page || 1
       },
@@ -166,11 +168,13 @@ export default class DigitalOcean {
       actionPath: 'droplets',
       key: 'droplets',
       qs: {
+        tag_name: query.tag_name || '',
         per_page: query.per_page || this.per_page,
         page: query.page || 1
       },
       includeAll: query.includeAll || false
     };
+    console.log(options);
     this.requestHelper.request(options, callback);
   }
 
@@ -187,6 +191,7 @@ export default class DigitalOcean {
       actionPath: 'droplets/' + encodeURIComponent(dropletId) + '/kernels',
       key: 'kernels',
       qs: {
+        tag_name: query.tag_name || '',
         per_page: query.per_page || this.per_page,
         page: query.page || 1
       },
@@ -208,6 +213,7 @@ export default class DigitalOcean {
       actionPath: 'droplets/' + encodeURIComponent(dropletId) + '/snapshots',
       key: 'snapshots',
       qs: {
+        tag_name: query.tag_name || '',
         per_page: query.per_page || this.per_page,
         page: query.page || 1
       },
@@ -229,6 +235,7 @@ export default class DigitalOcean {
       actionPath: 'droplets/' + encodeURIComponent(dropletId) + '/backups',
       key: 'backups',
       qs: {
+        tag_name: query.tag_name || '',
         per_page: query.per_page || this.per_page,
         page: query.page || 1
       },
@@ -250,6 +257,7 @@ export default class DigitalOcean {
       actionPath: 'droplets/' + encodeURIComponent(dropletId) + '/actions',
       key: 'actions',
       qs: {
+        tag_name: query.tag_name || '',
         per_page: query.per_page || this.per_page,
         page: query.page || 1
       },
@@ -387,6 +395,7 @@ export default class DigitalOcean {
       actionPath: 'domains',
       key: 'domains',
       qs: {
+        tag_name: query.tag_name || '',
         per_page: query.per_page || this.per_page,
         page: query.page || 1
       }
@@ -453,6 +462,7 @@ export default class DigitalOcean {
       actionPath: 'domains/' + encodeURIComponent(name) + '/records',
       key: 'domain_records',
       qs: {
+        tag_name: query.tag_name || '',
         per_page: query.per_page || this.per_page,
         page: query.page || 1
       },
@@ -539,6 +549,7 @@ export default class DigitalOcean {
       actionPath: 'regions',
       key: 'regions',
       qs: {
+        tag_name: query.tag_name || '',
         per_page: query.per_page || this.per_page,
         page: query.page || 1
       },
@@ -559,6 +570,7 @@ export default class DigitalOcean {
       actionPath: 'sizes',
       key: 'sizes',
       qs: {
+        tag_name: query.tag_name || '',
         per_page: query.per_page || this.per_page,
         page: query.page || 1
       },
@@ -580,6 +592,7 @@ export default class DigitalOcean {
       actionPath: 'images',
       key: 'images',
       qs: {
+        tag_name: query.tag_name || '',
         per_page: query.per_page || this.per_page,
         page: query.page || 1,
         private: query.private || false,
@@ -631,6 +644,7 @@ export default class DigitalOcean {
       actionPath: 'images/' + encodeURIComponent(imageId) + '/actions',
       key: 'actions',
       qs: {
+        tag_name: query.tag_name || '',
         per_page: query.per_page || this.per_page,
         page: query.page || 1
       },
@@ -715,6 +729,7 @@ export default class DigitalOcean {
       actionPath: 'floating_ips',
       key: 'floating_ips',
       qs: {
+        tag_name: query.tag_name || '',
         per_page: query.per_page || this.per_page,
         page: query.page || 1
       },
@@ -818,6 +833,7 @@ export default class DigitalOcean {
       actionPath: 'floating_ips/' + encodeURIComponent(ipAddress) + '/actions',
       key: 'actions',
       qs: {
+        tag_name: query.tag_name || '',
         per_page: query.per_page || this.per_page,
         page: query.page || 1
       },
@@ -898,6 +914,7 @@ export default class DigitalOcean {
       actionPath: 'tags',
       key: 'tags',
       qs: {
+        tag_name: query.tag_name || '',
         per_page: query.per_page || this.per_page,
         page: query.page || 1
       },
