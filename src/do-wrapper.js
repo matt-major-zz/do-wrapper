@@ -174,7 +174,6 @@ export default class DigitalOcean {
       },
       includeAll: query.includeAll || false
     };
-    console.log(options);
     this.requestHelper.request(options, callback);
   }
 
