@@ -168,7 +168,7 @@ export default class DigitalOcean {
       actionPath: 'droplets',
       key: 'droplets',
       qs: {
-        tag_name: query.tag_name || '',
+        tag_name: query.tag_name || undefined,
         per_page: query.per_page || this.per_page,
         page: query.page || 1
       },
