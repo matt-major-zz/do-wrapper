@@ -17,17 +17,19 @@ export default class DigitalOcean {
   /**
    * Get Account Information
    * Info {@link https://developers.digitalocean.com/documentation/v2/#account account}
-   * @param {*} callback - Function to execute on completion
+   * @param {*} [callback] - Optional function to execute on completion
+   * @returns {Promise|undefined} - Returns a promise if callback is not defined
    */
   account(callback) {
     let options = {actionPath: 'account'};
-    this.requestHelper.request(options, callback);
+    return this.requestHelper.request(options, callback);
   }
 
   /**
    * Get Account Actions
    * @param {{per_page: number, page: number, includeAll: boolean}} query - Query Options
-   * @param {*} callback - Function to execute on completion
+   * @param {*} [callback] - Optional function to execute on completion
+   * @returns {Promise|undefined} - Returns a promise if callback is not defined
    */
   accountGetActions(query, callback) {
     let options = {
@@ -40,7 +42,7 @@ export default class DigitalOcean {
       },
       includeAll: query.includeAll || false
     };
-    this.requestHelper.request(options, callback);
+    return this.requestHelper.request(options, callback);
   }
 
   /**
@@ -48,13 +50,14 @@ export default class DigitalOcean {
    * Info: {@link https://developers.digitalocean.com/documentation/v2/#retrieve-an-existing-action retrieve-an-existing-action}
    *
    * @param {number} actionId - The Id of the Action
-   * @param {*} callback - Function to execute on completion
+   * @param {*} [callback] - Optional function to execute on completion
+   * @returns {Promise|undefined} - Returns a promise if callback is not defined
    */
   accountGetAction(actionId, callback) {
     let options = {
       actionPath: 'actions/' + encodeURIComponent(actionId)
     };
-    this.requestHelper.request(options, callback);
+    return this.requestHelper.request(options, callback);
   }
 
   /**
@@ -62,7 +65,8 @@ export default class DigitalOcean {
    * Info: {@link https://developers.digitalocean.com/documentation/v2/#list-all-keys list-all-keys}
    *
    * @param {{per_page: number, page: number, includeAll: boolean}} query - Query Options
-   * @param {*} callback - Function to execute on completion
+   * @param {*} [callback] - Optional function to execute on completion
+   * @returns {Promise|undefined} - Returns a promise if callback is not defined
    */
   accountGetKeys(query, callback) {
     let options = {
@@ -75,7 +79,7 @@ export default class DigitalOcean {
       },
       includeAll: query.includeAll || false
     };
-    this.requestHelper.request(options, callback);
+    return this.requestHelper.request(options, callback);
   }
 
   /**
@@ -83,7 +87,8 @@ export default class DigitalOcean {
    * Info: {@link https://developers.digitalocean.com/documentation/v2/#create-a-new-key create-a-new-key}
    *
    * @param {*} configuration - Information required to create SSH Key | {name: ?, public_key: ?}
-   * @param {*} callback - Function to execute on completion
+   * @param {*} [callback] - Optional function to execute on completion
+   * @returns {Promise|undefined} - Returns a promise if callback is not defined
    */
   accountAddKey(configuration, callback) {
     let options = {
@@ -91,7 +96,7 @@ export default class DigitalOcean {
       method: 'POST',
       body: configuration
     };
-    this.requestHelper.request(options, callback);
+    return this.requestHelper.request(options, callback);
   }
 
   /**
@@ -99,13 +104,14 @@ export default class DigitalOcean {
    * Info: {@link https://developers.digitalocean.com/documentation/v2/#retrieve-an-existing-key retrieve-an-existing-key}
    *
    * @param {number} keyId - The Id of the Key
-   * @param {*} callback - Function to execute on completion
+   * @param {*} [callback] - Optional function to execute on completion
+   * @returns {Promise|undefined} - Returns a promise if callback is not defined
    */
   accountGetKeyById(keyId, callback) {
     let options = {
       actionPath: 'account/keys/' + encodeURIComponent(keyId)
     };
-    this.requestHelper.request(options, callback);
+    return this.requestHelper.request(options, callback);
   }
 
   /**
@@ -113,13 +119,14 @@ export default class DigitalOcean {
    * Info: {@link https://developers.digitalocean.com/documentation/v2/#retrieve-an-existing-key retrieve-an-existing-key}
    *
    * @param {string} fingerprint - The Fingerprint of the Key
-   * @param {*} callback - Function to execute on completion
+   * @param {*} [callback] - Optional function to execute on completion
+   * @returns {Promise|undefined} - Returns a promise if callback is not defined
    */
   accountGetKeyByFingerprint(fingerprint, callback) {
     let options = {
       actionPath: 'account/keys/' + encodeURIComponent(fingerprint)
     };
-    this.requestHelper.request(options, callback);
+    return this.requestHelper.request(options, callback);
   }
 
   /**
@@ -128,7 +135,8 @@ export default class DigitalOcean {
    *
    * @param {*} keyIdentity - The Id or Fingerprint of the SSH Key
    * @param {string} keyName - What to rename the SSH Key to
-   * @param {*} callback - Function to execute on completion
+   * @param {*} [callback] - Optional function to execute on completion
+   * @returns {Promise|undefined} - Returns a promise if callback is not defined
    */
   accountRenameKey(keyIdentity, keyName, callback) {
     let options = {
@@ -138,7 +146,7 @@ export default class DigitalOcean {
         name: keyName
       }
     };
-    this.requestHelper.request(options, callback);
+    return this.requestHelper.request(options, callback);
   }
 
   /**
@@ -146,14 +154,15 @@ export default class DigitalOcean {
    * Info: {@link https://developers.digitalocean.com/documentation/v2/#destroy-a-key destroy-a-key}
    *
    * @param {*} keyIdentity - The Id or Fingerprint of the SSH Key
-   * @param {*} callback - Function to execute on completion
+   * @param {*} [callback] - Optional function to execute on completion
+   * @returns {Promise|undefined} - Returns a promise if callback is not defined
    */
   accountDeleteKey(keyIdentity, callback) {
     let options = {
       actionPath: 'account/keys/' + encodeURIComponent(keyIdentity),
       method: 'DELETE'
     };
-    this.requestHelper.request(options, callback);
+    return this.requestHelper.request(options, callback);
   }
 
   /**
@@ -161,7 +170,8 @@ export default class DigitalOcean {
    * Info: {@link https://developers.digitalocean.com/documentation/v2/#list-all-droplets list-all-droplets}
    *
    * @param {{per_page: number, page: number, includeAll: boolean}} query - Query Options
-   * @param {*} callback - Function to execute on completion
+   * @param {*} [callback] - Optional function to execute on completion
+   * @returns {Promise|undefined} - Returns a promise if callback is not defined
    */
   dropletsGetAll(query, callback) {
     let options = {
@@ -174,7 +184,7 @@ export default class DigitalOcean {
       },
       includeAll: query.includeAll || false
     };
-    this.requestHelper.request(options, callback);
+    return this.requestHelper.request(options, callback);
   }
 
   /**
@@ -183,7 +193,8 @@ export default class DigitalOcean {
    *
    * @param {number} dropletId - The Id of the Droplet
    * @param {{per_page: number, page: number, includeAll: boolean}} query - Query Options
-   * @param {*} callback - Function to execute on completion
+   * @param {*} [callback] - Optional function to execute on completion
+   * @returns {Promise|undefined} - Returns a promise if callback is not defined
    */
   dropletsGetKernels(dropletId, query, callback) {
     let options = {
@@ -196,7 +207,7 @@ export default class DigitalOcean {
       },
       includeAll: query.includeAll || false
     };
-    this.requestHelper.request(options, callback);
+    return this.requestHelper.request(options, callback);
   }
 
   /**
@@ -205,7 +216,8 @@ export default class DigitalOcean {
    *
    * @param {number} dropletId - The Id of the Droplet
    * @param {{per_page: number, page: number, includeAll: boolean}} query - Query Options
-   * @param {*} callback - Function to execute on completion
+   * @param {*} [callback] - Optional function to execute on completion
+   * @returns {Promise|undefined} - Returns a promise if callback is not defined
    */
   dropletsGetSnapshots(dropletId, query, callback) {
     let options = {
@@ -218,7 +230,7 @@ export default class DigitalOcean {
       },
       includeAll: query.includeAll || false
     };
-    this.requestHelper.request(options, callback);
+    return this.requestHelper.request(options, callback);
   }
 
   /**
@@ -227,7 +239,8 @@ export default class DigitalOcean {
    *
    * @param {number} dropletId - The Id of the Droplet
    * @param {{per_page: number, page: number, includeAll: boolean}} query - Query Options
-   * @param {*} callback - Function to execute on completion
+   * @param {*} [callback] - Optional function to execute on completion
+   * @returns {Promise|undefined} - Returns a promise if callback is not defined
    */
   dropletsGetBackups(dropletId, query, callback) {
     let options = {
@@ -240,7 +253,7 @@ export default class DigitalOcean {
       },
       includeAll: query.includeAll || false
     };
-    this.requestHelper.request(options, callback);
+    return this.requestHelper.request(options, callback);
   }
 
   /**
@@ -249,7 +262,8 @@ export default class DigitalOcean {
    *
    * @param {number} dropletId - The Id of the Droplet
    * @param {{per_page: number, page: number, includeAll: boolean}} query - Query Options
-   * @param {*} callback - Function to execute on completion
+   * @param {*} [callback] - Optional function to execute on completion
+   * @returns {Promise|undefined} - Returns a promise if callback is not defined
    */
   dropletsGetActions(dropletId, query, callback) {
     let options = {
@@ -262,7 +276,7 @@ export default class DigitalOcean {
       },
       includeAll: query.includeAll || false
     };
-    this.requestHelper.request(options, callback);
+    return this.requestHelper.request(options, callback);
   }
 
   /**
@@ -270,7 +284,8 @@ export default class DigitalOcean {
    * Info: {@link https://developers.digitalocean.com/documentation/v2/#create-a-new-droplet create-a-new-droplet}
    *
    * @param {*} configuration - Creation parameters, see info for more details.
-   * @param {*} callback - Function to execute on completion
+   * @param {*} [callback] - Optional function to execute on completion
+   * @returns {Promise|undefined} - Returns a promise if callback is not defined
    */
   dropletsCreate(configuration, callback) {
     let options = {
@@ -278,7 +293,7 @@ export default class DigitalOcean {
       method: 'POST',
       body: configuration
     };
-    this.requestHelper.request(options, callback);
+    return this.requestHelper.request(options, callback);
   }
 
   /**
@@ -286,13 +301,14 @@ export default class DigitalOcean {
    * Info: {@link https://developers.digitalocean.com/documentation/v2/#retrieve-an-existing-droplet-by-id retrieve-an-existing-droplet-by-id}
    *
    * @param {number} dropletId - The Id of the Droplet
-   * @param {*} callback - Function to execute on completion
+   * @param {*} [callback] - Optional function to execute on completion
+   * @returns {Promise|undefined} - Returns a promise if callback is not defined
    */
   dropletsGetById(dropletId, callback) {
     let options = {
       actionPath: 'droplets/' + encodeURIComponent(dropletId)
     };
-    this.requestHelper.request(options, callback);
+    return this.requestHelper.request(options, callback);
   }
 
   /**
@@ -300,14 +316,15 @@ export default class DigitalOcean {
    * Info: {@link https://developers.digitalocean.com/documentation/v2/#delete-a-droplet delete-a-droplet}
    *
    * @param {number} dropletId - The Id of the Droplet
-   * @param {*} callback - Function to execute on completion
+   * @param {*} [callback] - Optional function to execute on completion
+   * @returns {Promise|undefined} - Returns a promise if callback is not defined
    */
   dropletsDelete(dropletId, callback) {
     let options = {
       actionPath: 'droplets/' + encodeURIComponent(dropletId),
       method: 'DELETE'
     };
-    this.requestHelper.request(options, callback);
+    return this.requestHelper.request(options, callback);
   }
 
   /**
@@ -315,39 +332,42 @@ export default class DigitalOcean {
    * Info: {@link https://developers.digitalocean.com/documentation/v2/#list-neighbors-for-a-droplet list-neighbors-for-a-droplet}
    *
    * @param {number} dropletId - The Id of the Droplet
-   * @param {*} callback - Function to execute on completion
+   * @param {*} [callback] - Optional function to execute on completion
+   * @returns {Promise|undefined} - Returns a promise if callback is not defined
    */
   dropletsGetNeighbors(dropletId, callback) {
     let options = {
       actionPath: 'droplets/' + encodeURIComponent(dropletId) + '/neighbors'
     };
-    this.requestHelper.request(options, callback);
+    return this.requestHelper.request(options, callback);
   }
 
   /**
    * Get a report of Droplets sharing the same hardware
    * Info: {@link https://developers.digitalocean.com/documentation/v2/#list-all-droplet-neighbors list-all-droplet-neighbors}
    *
-   * @param {*} callback - Function to execute on completion
+   * @param {*} [callback] - Optional function to execute on completion
+   * @returns {Promise|undefined} - Returns a promise if callback is not defined
    */
   dropletsGetNeighborsReport(callback) {
     let options = {
       actionPath: 'reports/droplet_neighbors'
     };
-    this.requestHelper.request(options, callback);
+    return this.requestHelper.request(options, callback);
   }
 
   /**
    * Get a list of scheduled Droplet Upgrades
    * Info: {@link https://developers.digitalocean.com/documentation/v2/#list-droplet-upgrades list-droplet-upgrades}
    *
-   * @param {*} callback - Function to execute on completion
+   * @param {*} [callback] - Optional function to execute on completion
+   * @returns {Promise|undefined} - Returns a promise if callback is not defined
    */
   dropletsGetUpgrades(callback) {
     let options = {
       actionPath: 'droplet_upgrades'
     };
-    this.requestHelper.request(options, callback);
+    return this.requestHelper.request(options, callback);
   }
 
   /**
@@ -356,7 +376,8 @@ export default class DigitalOcean {
    *
    * @param {number} dropletId - The Id of the Droplet
    * @param {*} action - Action Object
-   * @param {*} callback - Function to execute on completion
+   * @param {*} [callback] - Optional function to execute on completion
+   * @returns {Promise|undefined} - Returns a promise if callback is not defined
    */
   dropletsRequestAction(dropletId, action, callback) {
     let options = {
@@ -364,7 +385,7 @@ export default class DigitalOcean {
       method: 'POST',
       body: action
     };
-    this.requestHelper.request(options, callback);
+    return this.requestHelper.request(options, callback);
   }
 
   /**
@@ -373,13 +394,14 @@ export default class DigitalOcean {
    *
    * @param {number} dropletId - The Id of the Droplet
    * @param {number} actionId - The Id of the Action
-   * @param {*} callback - Function to execute on completion
+   * @param {*} [callback] - Optional function to execute on completion
+   * @returns {Promise|undefined} - Returns a promise if callback is not defined
    */
   dropletsGetAction(dropletId, actionId, callback) {
     let options = {
       actionPath: 'droplets/' + encodeURIComponent(dropletId) + '/actions/' + encodeURIComponent(actionId)
     };
-    this.requestHelper.request(options, callback);
+    return this.requestHelper.request(options, callback);
   }
 
   /**
@@ -387,7 +409,8 @@ export default class DigitalOcean {
    * Info: {@link https://developers.digitalocean.com/documentation/v2/#list-all-domains list-all-domains}
    *
    * @param {{per_page: number, page: number, includeAll: boolean}} query - Query Options
-   * @param {*} callback - Function to execute on completion
+   * @param {*} [callback] - Optional function to execute on completion
+   * @returns {Promise|undefined} - Returns a promise if callback is not defined
    */
   domainsGetAll(query, callback) {
     let options = {
@@ -399,7 +422,7 @@ export default class DigitalOcean {
         page: query.page || 1
       }
     };
-    this.requestHelper.request(options, callback);
+    return this.requestHelper.request(options, callback);
   }
 
   /**
@@ -408,7 +431,8 @@ export default class DigitalOcean {
    *
    * @param {string} name - Domain Name
    * @param {string} ip - The Ip of the Droplet
-   * @param {*} callback - Function to execute on completion
+   * @param {*} [callback] - Optional function to execute on completion
+   * @returns {Promise|undefined} - Returns a promise if callback is not defined
    */
   domainsCreate(name, ip, callback) {
     let options = {
@@ -416,7 +440,7 @@ export default class DigitalOcean {
       method: 'POST',
       body: {name: name, ip_address: ip}
     };
-    this.requestHelper.request(options, callback);
+    return this.requestHelper.request(options, callback);
   }
 
   /**
@@ -424,13 +448,14 @@ export default class DigitalOcean {
    * Info: {@link https://developers.digitalocean.com/documentation/v2/#retrieve-an-existing-domain retrieve-an-existing-domain}
    *
    * @param {string} name - The Domain Name
-   * @param {*} callback - Function to execute on completion
+   * @param {*} [callback] - Optional function to execute on completion
+   * @returns {Promise|undefined} - Returns a promise if callback is not defined
    */
   domainsGet(name, callback) {
     let options = {
       actionPath: 'domains/' + encodeURIComponent(name)
     };
-    this.requestHelper.request(options, callback);
+    return this.requestHelper.request(options, callback);
   }
 
   /**
@@ -438,14 +463,15 @@ export default class DigitalOcean {
    * Info: {@link https://developers.digitalocean.com/documentation/v2/#delete-a-domain delete-a-domain}
    *
    * @param {string} name - The Domain Name
-   * @param {*} callback - Function to execute on completion
+   * @param {*} [callback] - Optional function to execute on completion
+   * @returns {Promise|undefined} - Returns a promise if callback is not defined
    */
   domainsDelete(name, callback) {
     let options = {
       actionPath: 'domains/' + encodeURIComponent(name),
       method: 'DELETE'
     };
-    this.requestHelper.request(options, callback);
+    return this.requestHelper.request(options, callback);
   }
 
   /**
@@ -454,7 +480,8 @@ export default class DigitalOcean {
    *
    * @param {string} name - The Domain Name
    * @param {{per_page: number, page: number, includeAll: boolean}} query - Query Options
-   * @param {*} callback - Function to execute on completion
+   * @param {*} [callback] - Optional function to execute on completion
+   * @returns {Promise|undefined} - Returns a promise if callback is not defined
    */
   domainRecordsGetAll(name, query, callback) {
     let options = {
@@ -467,7 +494,7 @@ export default class DigitalOcean {
       },
       includeAll: query.includeAll || false
     };
-    this.requestHelper.request(options, callback);
+    return this.requestHelper.request(options, callback);
   }
 
   /**
@@ -476,7 +503,8 @@ export default class DigitalOcean {
    *
    * @param {string} name - The Domain Name
    * @param {*} configuration - Data required to create the Domain Record
-   * @param {*} callback - Function to execute on completion
+   * @param {*} [callback] - Optional function to execute on completion
+   * @returns {Promise|undefined} - Returns a promise if callback is not defined
    */
   domainRecordsCreate(name, configuration, callback) {
     let options = {
@@ -484,7 +512,7 @@ export default class DigitalOcean {
       method: 'POST',
       body: configuration
     };
-    this.requestHelper.request(options, callback);
+    return this.requestHelper.request(options, callback);
   }
 
   /**
@@ -493,13 +521,14 @@ export default class DigitalOcean {
    *
    * @param {string} name - The Domain Name
    * @param {number} domainRecordId - The Id of the Domain Record
-   * @param {*} callback - Function to execute on completion
+   * @param {*} [callback] - Optional function to execute on completion
+   * @returns {Promise|undefined} - Returns a promise if callback is not defined
    */
   domainRecordsGet(name, domainRecordId, callback) {
     let options = {
       actionPath: 'domains/' + encodeURIComponent(name) + '/records/' + encodeURIComponent(domainRecordId)
     };
-    this.requestHelper.request(options, callback);
+    return this.requestHelper.request(options, callback);
   }
 
   /**
@@ -509,7 +538,8 @@ export default class DigitalOcean {
    * @param {string} name - The Domain Name
    * @param {number} domainRecordId - The Id of the Domain Record
    * @param {*} configuration - Data required to update the Domain Record
-   * @param {*} callback - Function to execute on completion
+   * @param {*} [callback] - Optional function to execute on completion
+   * @returns {Promise|undefined} - Returns a promise if callback is not defined
    */
   domainRecordsUpdate(name, domainRecordId, configuration, callback) {
     let options = {
@@ -517,7 +547,7 @@ export default class DigitalOcean {
       method: 'PUT',
       body: configuration
     };
-    this.requestHelper.request(options, callback);
+    return this.requestHelper.request(options, callback);
   }
 
   /**
@@ -526,14 +556,15 @@ export default class DigitalOcean {
    *
    * @param {string} name - The Domain Name
    * @param {number} domainRecordId - The Id of the Domain Record
-   * @param {*} callback - Function to execute on completion
+   * @param {*} [callback] - Optional function to execute on completion
+   * @returns {Promise|undefined} - Returns a promise if callback is not defined
    */
   domainRecordsDelete(name, domainRecordId, callback) {
     let options = {
       actionPath: 'domains/' + encodeURIComponent(name) + '/records/' + encodeURIComponent(domainRecordId),
       method: 'DELETE'
     };
-    this.requestHelper.request(options, callback);
+    return this.requestHelper.request(options, callback);
   }
 
   /**
@@ -541,7 +572,8 @@ export default class DigitalOcean {
    * Info: {@link https://developers.digitalocean.com/documentation/v2/#list-all-regions list-all-regions}
    *
    * @param {{per_page: number, page: number, includeAll: boolean}} query - Query Options
-   * @param {*} callback - Function to execute on completion
+   * @param {*} [callback] - Optional function to execute on completion
+   * @returns {Promise|undefined} - Returns a promise if callback is not defined
    */
   regionsGetAll(query, callback) {
     let options = {
@@ -554,7 +586,7 @@ export default class DigitalOcean {
       },
       includeAll: query.includeAll || false
     };
-    this.requestHelper.request(options, callback);
+    return this.requestHelper.request(options, callback);
   }
 
   /**
@@ -562,7 +594,8 @@ export default class DigitalOcean {
    * Info: {@link https://developers.digitalocean.com/documentation/v2/#list-all-sizes list-all-sizes}
    *
    * @param {{per_page: number, page: number, includeAll: boolean}} query - Query Options
-   * @param {*} callback - Function to execute on completion
+   * @param {*} [callback] - Optional function to execute on completion
+   * @returns {Promise|undefined} - Returns a promise if callback is not defined
    */
   sizesGetAll(query, callback) {
     let options = {
@@ -575,7 +608,7 @@ export default class DigitalOcean {
       },
       includeAll: query.includeAll || false
     };
-    this.requestHelper.request(options, callback);
+    return this.requestHelper.request(options, callback);
   }
 
   /**
@@ -584,7 +617,8 @@ export default class DigitalOcean {
    * Info: {@link https://developers.digitalocean.com/documentation/v2/#list-all-images list-all-images}
    *
    * @param {{per_page: number, page: number, includeAll: boolean, private: boolean}} query - Query Options
-   * @param {*} callback - Function to execute on completion
+   * @param {*} [callback] - Optional function to execute on completion
+   * @returns {Promise|undefined} - Returns a promise if callback is not defined
    */
   imagesGetAll(query, callback) {
     let options = {
@@ -599,7 +633,7 @@ export default class DigitalOcean {
       },
       includeAll: query.includeAll || false
     };
-    this.requestHelper.request(options, callback);
+    return this.requestHelper.request(options, callback);
   }
 
   /**
@@ -607,13 +641,14 @@ export default class DigitalOcean {
    * Info: {@link https://developers.digitalocean.com/documentation/v2/#retrieve-an-existing-image-by-id retrieve-an-existing-image-by-id}
    *
    * @param {number} imageId - The Id of the Image
-   * @param {*} callback - Function to execute on completion
+   * @param {*} [callback] - Optional function to execute on completion
+   * @returns {Promise|undefined} - Returns a promise if callback is not defined
    */
   imagesGetById(imageId, callback) {
     let options = {
       actionPath: 'images/' + encodeURIComponent(imageId)
     };
-    this.requestHelper.request(options, callback);
+    return this.requestHelper.request(options, callback);
   }
 
   /**
@@ -621,13 +656,14 @@ export default class DigitalOcean {
    * Info: {@link https://developers.digitalocean.com/documentation/v2/#retrieve-an-existing-image-by-slug retrieve-an-existing-image-by-slug}
    *
    * @param {string} slug - The Slug of the Image
-   * @param {*} callback - Function to execute on completion
+   * @param {*} [callback] - Optional function to execute on completion
+   * @returns {Promise|undefined} - Returns a promise if callback is not defined
    */
   imagesGetBySlug(slug, callback) {
     let options = {
       actionPath: 'images/' + encodeURIComponent(slug)
     };
-    this.requestHelper.request(options, callback);
+    return this.requestHelper.request(options, callback);
   }
 
   /**
@@ -636,7 +672,8 @@ export default class DigitalOcean {
    *
    * @param {number} imageId - The Id of the Image
    * @param {{per_page: number, page: number, includeAll: boolean}} query - Query Options
-   * @param {*} callback - Function to execute on completion
+   * @param {*} [callback] - Optional function to execute on completion
+   * @returns {Promise|undefined} - Returns a promise if callback is not defined
    */
   imagesGetActions(imageId, query, callback) {
     let options = {
@@ -649,7 +686,7 @@ export default class DigitalOcean {
       },
       includeAll: query.includeAll || false
     };
-    this.requestHelper.request(options, callback);
+    return this.requestHelper.request(options, callback);
   }
 
   /**
@@ -658,7 +695,8 @@ export default class DigitalOcean {
    *
    * @param {number} imageId - The Id of the Image
    * @param {string} name - The Name to update the Image to
-   * @param {*} callback - Function to execute on completion
+   * @param {*} [callback] - Optional function to execute on completion
+   * @returns {Promise|undefined} - Returns a promise if callback is not defined
    */
   imagesUpdate(imageId, name, callback) {
     let options = {
@@ -666,7 +704,7 @@ export default class DigitalOcean {
       body: {name: name},
       method: 'PUT'
     };
-    this.requestHelper.request(options, callback);
+    return this.requestHelper.request(options, callback);
   }
 
   /**
@@ -674,14 +712,15 @@ export default class DigitalOcean {
    * Info: {@link https://developers.digitalocean.com/documentation/v2/#delete-an-image delete-an-image}
    *
    * @param {number} imageId - The Id of the Image
-   * @param {*} callback - Function to execute on completion
+   * @param {*} [callback] - Optional function to execute on completion
+   * @returns {Promise|undefined} - Returns a promise if callback is not defined
    */
   imagesDelete(imageId, callback) {
     let options = {
       actionPath: 'images/' + encodeURIComponent(imageId),
       method: 'DELETE'
     };
-    this.requestHelper.request(options, callback);
+    return this.requestHelper.request(options, callback);
   }
 
   /**
@@ -690,7 +729,8 @@ export default class DigitalOcean {
    *
    * @param {number} imageId - The Id of the Image
    * @param {*} action - Action Options
-   * @param {*} callback - Function to execute on completion
+   * @param {*} [callback] - Optional function to execute on completion
+   * @returns {Promise|undefined} - Returns a promise if callback is not defined
    */
   imagesRequestAction(imageId, action, callback) {
     let options = {
@@ -698,7 +738,7 @@ export default class DigitalOcean {
       method: 'POST',
       body: action
     };
-    this.requestHelper.request(options, callback);
+    return this.requestHelper.request(options, callback);
   }
 
   /**
@@ -707,13 +747,14 @@ export default class DigitalOcean {
    *
    * @param {number} imageId - The Id of the Image
    * @param {number} actionId - The Id of the Action
-   * @param {*} callback - Function to execute on completion
+   * @param {*} [callback] - Optional function to execute on completion
+   * @returns {Promise|undefined} - Returns a promise if callback is not defined
    */
   imagesGetAction(imageId, actionId, callback) {
     let options = {
       actionPath: 'images/' + encodeURIComponent(imageId) + '/actions/' + encodeURIComponent(actionId)
     };
-    this.requestHelper.request(options, callback);
+    return this.requestHelper.request(options, callback);
   }
 
   /**
@@ -721,7 +762,8 @@ export default class DigitalOcean {
    * Info: {@link https://developers.digitalocean.com/documentation/v2/#list-all-floating-ips list-all-floating-ips}
    *
    * @param {{per_page: number, page: number, includeAll: boolean}} query - Query Options
-   * @param {*} callback - Function to execute on completion
+   * @param {*} [callback] - Optional function to execute on completion
+   * @returns {Promise|undefined} - Returns a promise if callback is not defined
    */
   floatingIpsGetAll(query, callback) {
     let options = {
@@ -734,7 +776,7 @@ export default class DigitalOcean {
       },
       includeAll: query.includeAll || false
     };
-    this.requestHelper.request(options, callback);
+    return this.requestHelper.request(options, callback);
   }
 
   /**
@@ -742,7 +784,8 @@ export default class DigitalOcean {
    * Info: {@link https://developers.digitalocean.com/documentation/v2/#create-a-new-floating-ip-assigned-to-a-droplet create-a-new-floating-ip-assigned-to-a-droplet}
    *
    * @param {number} dropletId - The ID of Droplet that the Floating IP will be assigned to.
-   * @param {*} callback - Function to execute on completion
+   * @param {*} [callback] - Optional function to execute on completion
+   * @returns {Promise|undefined} - Returns a promise if callback is not defined
    */
   floatingIpsAssignDroplet(dropletId, callback) {
     let options = {
@@ -752,7 +795,7 @@ export default class DigitalOcean {
         droplet_id: dropletId
       }
     };
-    this.requestHelper.request(options, callback);
+    return this.requestHelper.request(options, callback);
   }
 
   /**
@@ -760,7 +803,8 @@ export default class DigitalOcean {
    * Info: {@link https://developers.digitalocean.com/documentation/v2/#create-a-new-floating-ip-assigned-to-a-droplet create-a-new-floating-ip-assigned-to-a-droplet}
    *
    * @param {string} region - The slug identifier for the region the Floating IP will be reserved to.
-   * @param {*} callback - Function to execute on completion
+   * @param {*} [callback] - Optional function to execute on completion
+   * @returns {Promise|undefined} - Returns a promise if callback is not defined
    */
   floatingIpsAssignRegion(region, callback) {
     let options = {
@@ -770,7 +814,7 @@ export default class DigitalOcean {
         region: region
       }
     };
-    this.requestHelper.request(options, callback);
+    return this.requestHelper.request(options, callback);
   }
 
   /**
@@ -778,13 +822,14 @@ export default class DigitalOcean {
    * Info: {@link https://developers.digitalocean.com/documentation/v2/#retrieve-an-existing-floating-ip retrieve-an-existing-floating-ip}
    *
    * @param {string} ipAddress - Floating IP address.
-   * @param {*} callback - Function to execute on completion
+   * @param {*} [callback] - Optional function to execute on completion
+   * @returns {Promise|undefined} - Returns a promise if callback is not defined
    */
   floatingIpsGet(ipAddress, callback) {
     let options = {
       actionPath: 'floating_ips/' + encodeURIComponent(ipAddress)
     };
-    this.requestHelper.request(options, callback);
+    return this.requestHelper.request(options, callback);
   }
 
   /**
@@ -792,14 +837,15 @@ export default class DigitalOcean {
    * Info: {@link https://developers.digitalocean.com/documentation/v2/#delete-a-floating-ips delete-a-floating-ips}
    *
    * @param {string} ipAddress - Floating IP address
-   * @param {*} callback - Function to execute on completion
+   * @param {*} [callback] - Optional function to execute on completion
+   * @returns {Promise|undefined} - Returns a promise if callback is not defined
    */
   floatingIpsDelete(ipAddress, callback) {
     let options = {
       actionPath: 'floating_ips/' + encodeURIComponent(ipAddress),
       method: 'DELETE'
     };
-    this.requestHelper.request(options, callback);
+    return this.requestHelper.request(options, callback);
   }
 
   /**
@@ -808,7 +854,8 @@ export default class DigitalOcean {
    *
    * @param {string} ipAddress - Floating IP address
    * @param {*} action - Action options
-   * @param {*} callback - Function to execute on completion
+   * @param {*} [callback] - Optional function to execute on completion
+   * @returns {Promise|undefined} - Returns a promise if callback is not defined
    */
   floatingIpsRequestAction(ipAddress, action, callback) {
     let options = {
@@ -816,7 +863,7 @@ export default class DigitalOcean {
       method: 'POST',
       body: action
     };
-    this.requestHelper.request(options, callback);
+    return this.requestHelper.request(options, callback);
   }
 
   /**
@@ -825,7 +872,8 @@ export default class DigitalOcean {
    *
    * @param {string} ipAddress - Floating IP address
    * @param {{per_page: number, page: number, includeAll: boolean}} query - Query Options
-   * @param {*} callback - Function to execute on completion
+   * @param {*} [callback] - Optional function to execute on completion
+   * @returns {Promise|undefined} - Returns a promise if callback is not defined
    */
   floatingIpsGetActions(ipAddress, query, callback) {
     let options = {
@@ -838,7 +886,7 @@ export default class DigitalOcean {
       },
       includeAll: query.includeAll || false
     };
-    this.requestHelper.request(options, callback);
+    return this.requestHelper.request(options, callback);
   }
 
   /**
@@ -847,13 +895,14 @@ export default class DigitalOcean {
    *
    * @param {string} ipAddress - Floating IP address
    * @param {number} actionId - The Id of the action
-   * @param {*} callback - Function to execute on completion
+   * @param {*} [callback] - Optional function to execute on completion
+   * @returns {Promise|undefined} - Returns a promise if callback is not defined
    */
   floatingIpsGetAction(ipAddress, actionId, callback) {
     let options = {
       actionPath: 'floating_ips/' + encodeURIComponent(ipAddress) + '/actions/' + encodeURIComponent(actionId)
     };
-    this.requestHelper.request(options, callback);
+    return this.requestHelper.request(options, callback);
   }
 
     /**
@@ -861,7 +910,8 @@ export default class DigitalOcean {
    * Info: {@link https://developers.digitalocean.com/documentation/v2/tagging-preview/#create-a-new-tag create-a-new-tag}
    *
    * @param {string} name - Tag Name
-   * @param {*} callback - Function to execute on completion
+   * @param {*} [callback] - Optional function to execute on completion
+   * @returns {Promise|undefined} - Returns a promise if callback is not defined
    */
   tagsCreate(name, callback) {
     let options = {
@@ -869,7 +919,7 @@ export default class DigitalOcean {
       method: 'POST',
       body: {name: name}
     };
-    this.requestHelper.request(options, callback);
+    return this.requestHelper.request(options, callback);
   }
 
     /**
@@ -877,14 +927,15 @@ export default class DigitalOcean {
    * Info: {@link https://developers.digitalocean.com/documentation/v2/tagging-preview/#delete-a-tag delete-a-tag}
    *
    * @param {string} name - Tag Name
-   * @param {*} callback - Function to execute on completion
+   * @param {*} [callback] - Optional function to execute on completion
+   * @returns {Promise|undefined} - Returns a promise if callback is not defined
    */
   tagsDelete(name, callback) {
     let options = {
       actionPath: 'tags/' + encodeURIComponent(name),
       method: 'DELETE'
     };
-    this.requestHelper.request(options, callback);
+    return this.requestHelper.request(options, callback);
   }
 
   /**
@@ -892,13 +943,14 @@ export default class DigitalOcean {
    * Info: {@link https://developers.digitalocean.com/documentation/v2/tagging-preview/#retrieve-a-tag retrieve-a-tag}
    *
    * @param {string} name - The Tag Name
-   * @param {*} callback - Function to execute on completion
+   * @param {*} [callback] - Optional function to execute on completion
+   * @returns {Promise|undefined} - Returns a promise if callback is not defined
    */
   tagsGet(name, callback) {
     let options = {
       actionPath: 'tags/' + encodeURIComponent(name)
     };
-    this.requestHelper.request(options, callback);
+    return this.requestHelper.request(options, callback);
   }
 
   /**
@@ -906,7 +958,8 @@ export default class DigitalOcean {
    * Info: {@link https://developers.digitalocean.com/documentation/v2/tagging-preview/#list-all-tags list-all-tags}
    *
    * @param {{per_page: number, page: number, includeAll: boolean}} query - Query Options
-   * @param {*} callback - Function to execute on completion
+   * @param {*} [callback] - Optional function to execute on completion
+   * @returns {Promise|undefined} - Returns a promise if callback is not defined
    */
   tagsGetAll(query, callback) {
     let options = {
@@ -919,7 +972,7 @@ export default class DigitalOcean {
       },
       includeAll: query.includeAll || false
     };
-    this.requestHelper.request(options, callback);
+    return this.requestHelper.request(options, callback);
   }
 
   /**
@@ -928,7 +981,8 @@ export default class DigitalOcean {
    *
    * @param {string} name - The Tag Name
    * @param {*} configuration - Array of objects which identify the resources to tag
-   * @param {*} callback - Function to execute on completion
+   * @param {*} [callback] - Optional function to execute on completion
+   * @returns {Promise|undefined} - Returns a promise if callback is not defined
    */
   tagsAddResources(name, configuration, callback) {
     let options = {
@@ -936,7 +990,7 @@ export default class DigitalOcean {
       method: 'POST',
       body: configuration
     };
-    this.requestHelper.request(options, callback);
+    return this.requestHelper.request(options, callback);
   }
 
   /**
@@ -945,7 +999,8 @@ export default class DigitalOcean {
    *
    * @param {string} name - The Tag Name
    * @param {*} configuration - Array of objects which identify the resources to untag
-   * @param {*} callback - Function to execute on completion
+   * @param {*} [callback] - Optional function to execute on completion
+   * @returns {Promise|undefined} - Returns a promise if callback is not defined
    */
   tagsDeleteResource(name, configuration, callback) {
     let options = {
@@ -953,7 +1008,7 @@ export default class DigitalOcean {
       method: 'DELETE',
       body: configuration
     };
-    this.requestHelper.request(options, callback);
+    return this.requestHelper.request(options, callback);
   }
 
     /**
@@ -963,7 +1018,8 @@ export default class DigitalOcean {
    *
    * @param {string} name - The Tag Name
       * @param {{per_page: number, page: number, includeAll: boolean}} query - Query Options
-   * @param {*} callback - Function to execute on completion
+   * @param {*} [callback] - Optional function to execute on completion
+   * @returns {Promise|undefined} - Returns a promise if callback is not defined
    */
   tagsGetDroplets(name, query, callback) {
     let options = {
@@ -976,7 +1032,7 @@ export default class DigitalOcean {
       },
       includeAll: query.includeAll || false
     };
-    this.requestHelper.request(options, callback);
+    return this.requestHelper.request(options, callback);
   }
 
     /**
@@ -985,7 +1041,8 @@ export default class DigitalOcean {
    * Info: {@link https://developers.digitalocean.com/documentation/v2/tagging-preview/#deleting-droplets-by-tag deleting-droplets-by-tag}
    *
    * @param {string} name - The Tag Name
-   * @param {*} callback - Function to execute on completion
+   * @param {*} [callback] - Optional function to execute on completion
+   * @returns {Promise|undefined} - Returns a promise if callback is not defined
    */
   tagsDeleteDroplets(name, callback) {
     let options = {
@@ -995,7 +1052,7 @@ export default class DigitalOcean {
         tag_name: name
       }
     };
-    this.requestHelper.request(options, callback);
+    return this.requestHelper.request(options, callback);
   }
 
     /**
@@ -1004,7 +1061,8 @@ export default class DigitalOcean {
    *
    * @param {string} name - The Tag Name
    * @param {*} action - Action Object
-   * @param {*} callback - Function to execute on completion
+   * @param {*} [callback] - Optional function to execute on completion
+   * @returns {Promise|undefined} - Returns a promise if callback is not defined
    */
   tagsRequestAction(name, action, callback) {
     let options = {
@@ -1015,6 +1073,6 @@ export default class DigitalOcean {
       },
       body: action
     };
-    this.requestHelper.request(options, callback);
+    return this.requestHelper.request(options, callback);
   }
 }

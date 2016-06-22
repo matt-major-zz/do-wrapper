@@ -19,10 +19,24 @@ export default class RequestHelper {
   /**
    * Check the required Request & Trigger
    * @param {*} options - Request Options
-   * @param {*} callback - Function to execute on completion
+   * @param {*} [callback] - Optional function to execute on completion
+   * @returns {Promise|undefined} - Returns a promise if callback is not defined
    */
   request(options, callback) {
+    let promise;
+    if (!callback) {
+      promise = new Promise((resolve, reject) => {
+        callback = (err, response, body) => {
+          if (err) {
+            reject(err);
+          } else {
+            resolve({response, body});
+          }
+        };
+      });
+    }
     options.includeAll ? this.getAllPages(options.key, options, callback) : this.submitRequest(options, callback);
+    return promise; // Will be undefined if callback was passed.
   }
 
   /**
