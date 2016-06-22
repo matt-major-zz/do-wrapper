@@ -33,6 +33,14 @@ export default class RequestHelper {
   submitRequest(options, callback) {
     let requestOptions = this.requestBuilder(options);
     request(requestOptions, (err, response, body) => {
+      // Generate errors when 4XX or 5XX status codes are generated.
+    if (!err && response.statusCode >= 400 && response.statusCode <= 599) {
+      if (body && body.id && body.message) {
+        err = new Error(body.id + ': ' + body.message);
+      } else {
+        err = new Error(response.statusCode + ': ' + response.statusMessage);
+      }
+    }
       if ( err ) {
         callback(err);
       } else {
