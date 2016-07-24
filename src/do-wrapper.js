@@ -856,7 +856,7 @@ export default class DigitalOcean {
     this.requestHelper.request(options, callback);
   }
 
-    /**
+  /**
    * Add a new Tag
    * Info: {@link https://developers.digitalocean.com/documentation/v2/tagging-preview/#create-a-new-tag create-a-new-tag}
    *
@@ -872,7 +872,7 @@ export default class DigitalOcean {
     this.requestHelper.request(options, callback);
   }
 
-    /**
+  /**
    * Delete a Tag
    * Info: {@link https://developers.digitalocean.com/documentation/v2/tagging-preview/#delete-a-tag delete-a-tag}
    *
@@ -956,13 +956,13 @@ export default class DigitalOcean {
     this.requestHelper.request(options, callback);
   }
 
-    /**
+  /**
    * Get Droplets by Tag
    *
    * Info: {@link https://developers.digitalocean.com/documentation/v2/tagging-preview/#listing-droplets-by-tag listing-droplets-by-tag}
    *
    * @param {string} name - The Tag Name
-      * @param {{per_page: number, page: number, includeAll: boolean}} query - Query Options
+   * @param {{per_page: number, page: number, includeAll: boolean}} query - Query Options
    * @param {*} callback - Function to execute on completion
    */
   tagsGetDroplets(name, query, callback) {
@@ -979,7 +979,7 @@ export default class DigitalOcean {
     this.requestHelper.request(options, callback);
   }
 
-    /**
+  /**
    * Delete Droplets by Tag
    *
    * Info: {@link https://developers.digitalocean.com/documentation/v2/tagging-preview/#deleting-droplets-by-tag deleting-droplets-by-tag}
@@ -998,7 +998,7 @@ export default class DigitalOcean {
     this.requestHelper.request(options, callback);
   }
 
-    /**
+  /**
    * Request an Action on a tag's Droplets
    * Info: {@link https://developers.digitalocean.com/documentation/v2/tagging-preview/#acting-on-tagged-droplets acting-on-tagged-droplets}
    *
