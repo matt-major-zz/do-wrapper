@@ -1017,4 +1017,108 @@ export default class DigitalOcean {
     };
     this.requestHelper.request(options, callback);
   }
+
+  /**
+   * List all of the Block Storage Volumes available on your account
+   * Info: {@link https://developers.digitalocean.com/documentation/v2/#list-all-block-storage-volumes list-all-block-storage-volumes}
+   *
+   * @param {string} [region] - Optional Region Name Filter
+   * @param {*} callback - Function to execute on completion
+   */
+  volumes(region, callback) {
+    let options = {
+      actionPath: 'volumes',
+      method: 'GET',
+      qs: {
+        region: region || ''
+      }
+    };
+    this.requestHelper.request(options, callback);
+  }
+
+  /**
+   * Create a new Block Storage Volume in a particular region
+   * Info: {@link https://developers.digitalocean.com/documentation/v2/#create-a-new-block-storage-volume create-a-new-block-storage-volume}
+   *
+   * @param {Object} volume - Volume configuration to create
+   * @param {*} callback - Function to execute on completion
+   */
+  volumesCreate(volume, callback) {
+    let options = {
+      actionPath: 'volumes',
+      method: 'POST',
+      body: volume
+    };
+    this.requestHelper.request(options, callback);
+  }
+
+  /**
+   * Show information about a Block Storage Volume based on its ID
+   * Info: {@link https://developers.digitalocean.com/documentation/v2/#retrieve-an-existing-block-storage-volume retrieve-an-existing-block-storage-volume}
+   *
+   * @param {string} driveId - ID of the Volume Drive
+   * @param {*} callback - Function to execute on completion
+   */
+  volumesGetById(driveId, callback) {
+    let options = {
+      actionPath: `volumes/${driveId}`,
+      method: 'GET'
+    };
+    this.requestHelper.request(options, callback);
+  }
+
+  /**
+   * Show information about a Block Storage Volume based on its Name and Region
+   * Info: {@link https://developers.digitalocean.com/documentation/v2/#retrieve-an-existing-block-storage-volume-by-name retrieve-an-existing-block-storage-volume-by-name}
+   *
+   * @param {string} name - Name of the Block Storage Volume
+   * @param {string} region - Region of the Block Storage Volume
+   * @param {*} callback - Function to execute on completion
+   */
+  volumesGetByName(name, region, callback) {
+    let options = {
+      actionPath: 'volumes',
+      method: 'GET',
+      qs: {
+        name: name,
+        region: region
+      }
+    };
+    this.requestHelper.request(options, callback);
+  }
+
+  /**
+   * Delete a Block Storage Volume based on its ID
+   * Info: {@link https://developers.digitalocean.com/documentation/v2/#delete-a-block-storage-volume delete-a-block-storage-volume}
+   *
+   * @param {string} driveId - ID of the Block Storage Volume Drive
+   * @param {*} callback - Function to execute on completion
+   */
+  volumesDeleteById(driveId, callback) {
+    let options = {
+      actionPath: `volumes/${driveId}`,
+      method: 'DELETE'
+    };
+    this.requestHelper.request(options, callback);
+  }
+
+  /**
+   * Delete a Block Storage Volume based on its Name and Region
+   * Info: {@link https://developers.digitalocean.com/documentation/v2/#delete-a-block-storage-volume-by-name delete-a-block-storage-volume-by-name}
+   *
+   * @param {string} name - Name of the Block Storage Volume
+   * @param {string} region - Region of the Block Storage Volume
+   * @param {*} callback - Function to execute on completion
+   */
+  volumesDeleteByName(name, region, callback) {
+    let options = {
+      actionPath: 'volumes',
+      method: 'DELETE',
+      qs: {
+        name: name,
+        region: region
+      }
+    };
+    this.requestHelper.request(options, callback);
+  }
 }
