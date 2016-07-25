@@ -51,6 +51,13 @@ api.account(function (err, res, body) {
 });
 ```
 
+And if you'd prefer to use promises, don't provide a callback:
+```js
+api.account().then(function (data) {
+  console.log(data.body);
+});
+```
+
 If you get back a response similar to the below, success!
 
 ```json
