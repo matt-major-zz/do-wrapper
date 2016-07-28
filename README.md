@@ -46,14 +46,14 @@ var DigitalOcean = require('do-wrapper'),
 
 You can now test that your API key is correct and that everything is working by checking for your account information:
 ```js
-api.account(function (err, res, body) {
+api.account((err, res, body) => {
   console.log(body);
 });
 ```
 
 And if you'd prefer to use promises, don't provide a callback:
 ```js
-api.account().then(function (data) {
+api.account().then((data) => {
   console.log(data.body);
 });
 ```
