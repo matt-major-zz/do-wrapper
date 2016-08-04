@@ -34,7 +34,7 @@
   },
   "devDependencies": {
     "chai": "^3.5.0",
-    "gulp": "3.9.0",
+    "gulp": "3.9.1",
     "gulp-babel": "5.2.1",
     "gulp-uglify": "1.5.1",
     "husky": "0.10.2",

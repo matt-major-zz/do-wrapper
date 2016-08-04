@@ -49,10 +49,22 @@ export default class RequestHelper {
     request(requestOptions, (err, response, body) => {
       if ( err ) {
         callback(err);
+      } else if ( !err && !this.isSuccessfulRequest(response.statusCode) ) {
+        callback(body);
       } else {
         callback(null, response, body);
       }
     });
+  }
+
+  /**
+   * Validate the Response Status Code
+   * @param {number} statusCode - The Status Code
+   * @returns {boolean}
+   */
+  isSuccessfulRequest(statusCode) {
+    const statusCodePattern = /^[2][0-9][0-9]$/;
+    return statusCodePattern.test(statusCode);
   }
 
   /**
