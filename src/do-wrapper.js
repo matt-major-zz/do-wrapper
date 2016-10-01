@@ -1185,4 +1185,22 @@ export default class DigitalOcean {
     };
     return this.requestHelper.request(options, callback);
   }
+
+  /**
+   * Request an Action on a Volume
+   * Info: {@link https://developers.digitalocean.com/documentation/v2/#block-storage-actions block-storage-actions}
+   *
+   * @param {number} volumeId - The Id of the Volume
+   * @param {*} action - Action Object
+   * @param {*} [callback] - Optional function to execute on completion
+   * @returns {Promise|undefined} - Returns a promise if callback is not defined
+   */
+  volumesRequestAction(volumeId, action, callback) {
+    let options = {
+      actionPath: 'volumes/' + encodeURIComponent(volumeId) + '/actions',
+      method: 'POST',
+      body: action
+    };
+    return this.requestHelper.request(options, callback);
+  }
 }
