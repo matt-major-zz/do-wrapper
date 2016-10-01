@@ -30,7 +30,7 @@
     "es6"
   ],
   "dependencies": {
-    "request": "2.61.0"
+    "request": "2.74.0"
   },
   "devDependencies": {
     "chai": "^3.5.0",
