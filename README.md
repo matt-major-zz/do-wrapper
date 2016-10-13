@@ -4,6 +4,7 @@
 [![Build Status](https://travis-ci.org/matt-major/do-wrapper.svg?branch=master)](https://travis-ci.org/matt-major/do-wrapper)
 [![Dependencies](https://david-dm.org/matt-major/do-wrapper.svg)](https://www.npmjs.com/package/do-wrapper)
 [![Downloads](https://img.shields.io/npm/dm/do-wrapper.svg)](https://www.npmjs.com/package/do-wrapper)
+[![Known Vulnerabilities](https://snyk.io/test/github/matt-major/do-wrapper/ec7006219fc32dfd29513c889215cb1065376738/badge.svg)](https://snyk.io/test/github/matt-major/do-wrapper/ec7006219fc32dfd29513c889215cb1065376738)
 
 ### Install
 
