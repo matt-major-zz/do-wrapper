@@ -14,7 +14,7 @@
     "build": "gulp compile && npm run doc",
     "precommit": "npm t",
     "test": "jshint src/*.js && ./node_modules/mocha/bin/mocha",
-    "doc": "./node_modules/.bin/jsdoc src/*.js -d doc/"
+    "doc": "./node_modules/.bin/jsdoc src/*.js -d docs/"
   },
   "license": "MIT",
   "bugs": {
