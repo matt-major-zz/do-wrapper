@@ -1,12 +1,12 @@
 {
-  "name": "do-wrapper",
-  "version": "3.11.1",
+  "name": "overcast-do-wrapper",
+  "version": "3.11.2",
   "description": "Node.js Wrapper for Digital Ocean API v2",
   "author": "Matt Major",
-  "homepage": "https://github.com/matt-major/do-wrapper",
+  "homepage": "https://github.com/andrewchilds/overcast-do-wrapper",
   "repository": {
     "type": "git",
-    "url": "https://github.com/matt-major/do-wrapper.git"
+    "url": "https://github.com/andrewchilds/overcast-do-wrapper.git"
   },
   "main": "./dist/do-wrapper.js",
   "types": "./types/do-wrapper.d.ts",
@@ -18,7 +18,7 @@
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/matt-major/do-wrapper/issues"
+    "url": "https://github.com/andrewchilds/overcast-do-wrapper/issues"
   },
   "keywords": [
     "digital ocean",

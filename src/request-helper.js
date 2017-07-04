@@ -83,17 +83,17 @@ export default class RequestHelper {
 
     this.submitRequest(options, (err, response, body) => {
       if ( err ) {
-        callback(err);
+        return callback(err);
       }
       total = body.meta.total;
       items = items.concat(body[key]);
-      required = total / (options.qs.per_page || 25);
+      required = Math.ceil(total / (options.qs.per_page || 25));
       if ( items.length >= total ) {
         return callback(null, response, items);
       } else {
         this.getRemainingPages(options, 2, required, function (err, response, body) {
           if ( err ) {
-            callback(err);
+            return callback(err);
           }
           completed++;
           items = items.concat(body[key]);
